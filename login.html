@@ -55,7 +55,7 @@
                     </li>
                     <!-- login button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
+                        <a class="nav-link" href="help.html">Help</a>
                     </li>
                 </ul>
             </div>
@@ -91,14 +91,21 @@
 
                         <img src="userprofile.png" alt="">
                     </div>
+                    <select name="Role" id="Role">
+                        <option value="null">I am a </option>
+                        <option value="Student">Bonafide Student</option>
+                        <option value="Alumni">Graduate Student(Alumni)</option>
+                        <option value="Faculty">Faculty Member</option>
+                    </select>
                     <input type="text" name="name" placeholder="Name">
                     <input type="text" name="Id" placeholder="Student Id/Faculty Id/Alumni Id ">
                     <input type="email" name="email" required placeholder="Email">
-                    <input type="date" name="yoj" id="" placeholder="Year of Joining">
+                    <input placeholder="Year of Joining"  type="text" onfocus="(this.type='date')" id="date">
+                   
                     <input type="password" name="password" required placeholder="enter your password">
 
                     <input type="submit" name="submit" value="Register" class="form-btn">
-                    <p>already have an account? <a id="flip-card-btn-turn-to-front"href="#">Login</a></p>
+                    <p>Already have an account? <a id="flip-card-btn-turn-to-front"href="#">Login</a></p>
                 
                 </form>
             </div>
@@ -120,7 +127,7 @@
 
             <a class="social-icon fa-solid fa-envelope btn btn-outline-light btn-block" href=""></a>
 
-            <p class="copyright">© Copyright ALUMNI</p>
+            <p>© Copyright ALUMNI</p>
     </footer>
 
 
