@@ -1,6 +1,9 @@
 body{
     background-color:#f3efe0;
 }
+.pageName{
+    margin-left: 2%;
+}
 .navbar{
     background-color:#222222;
     color: #3e4444;
@@ -8,7 +11,6 @@ body{
 h1{
     color: #222222;
     text-align: center;
-
 }
 h2{
     text-align: center;
@@ -17,15 +19,12 @@ h2{
     font-family: 'Cedarville Cursive', cursive;
     size: 100%;
 }
-
 #Top{
     text-align: center;
 }
-
 .Top-button{
     margin: 3%;
 }
-
 .Top-head{
     padding: 15% 15%;
     background-repeat: no-repeat;
@@ -33,10 +32,8 @@ h2{
     background-size: 100% 100%;
     background-blend-mode: normal;
 }
-
 #footer{
     background-color: #404040;
     text-align: center;
     padding: 7% 15%;
-    margin-left: 3%;
 }
