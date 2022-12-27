@@ -1,0 +1,42 @@
+body{
+    background-color:#f3efe0;
+}
+.navbar{
+    background-color:#222222;
+    color: #3e4444;
+}
+h1{
+    color: #222222;
+    text-align: center;
+
+}
+h2{
+    text-align: center;
+    padding: 3% 15%;
+    color: #222222;
+    font-family: 'Cedarville Cursive', cursive;
+    size: 100%;
+}
+
+#Top{
+    text-align: center;
+}
+
+.Top-button{
+    margin: 3%;
+}
+
+.Top-head{
+    padding: 15% 15%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: 100% 100%;
+    background-blend-mode: normal;
+}
+
+#footer{
+    background-color: #404040;
+    text-align: center;
+    padding: 7% 15%;
+    margin-left: 3%;
+}
