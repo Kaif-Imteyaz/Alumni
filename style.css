@@ -1,5 +1,6 @@
 body{
     background-color:#f3efe0;
+    font-family: 'Poppins', sans-serif;
 }
 .pageName{
     margin-left: 2%;
@@ -7,12 +8,15 @@ body{
 .navbar{
     background-color:#222222;
     color: #3e4444;
-    font-family: 'Poppins', sans-serif;
+}
+.collapse{
+    margin-right: 2%;
 }
 h1{
     color: #222222;
     text-align: center;
     font-family: 'Poppins', sans-serif;
+
 }
 h2{
     text-align: center;
@@ -21,12 +25,15 @@ h2{
     font-family: 'Poppins', sans-serif;
     size: 100%;
 }
+
 #Top{
     text-align: center;
 }
+
 .Top-button{
     margin: 3%;
 }
+
 .Top-head{
     padding: 15% 15%;
     background-repeat: no-repeat;
@@ -34,8 +41,16 @@ h2{
     background-size: 100% 100%;
     background-blend-mode: normal;
 }
+
 #footer{
     background-color: #404040;
     text-align: center;
-    padding: 7% 15%;
+    padding: 2% 2%;
+}
+.social-icon{
+    margin-top: 5%;
+    margin-left: 2%;
+}
+.copyright{
+    padding: 3%;
 }
