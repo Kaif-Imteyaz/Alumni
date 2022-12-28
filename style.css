@@ -12,8 +12,6 @@ html {
 .navbar{
     background-color:#222222;
     color: #3e4444;
-    overflow: hidden;
-    position:sticky;
 }
 .collapse{
     margin-right: 2%;
