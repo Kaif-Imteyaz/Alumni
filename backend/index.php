@@ -13,7 +13,7 @@
 
     //based on the url it's specific handler will be called. It the url asked is not present in our routes exceptionalPath handler will be called.
     if($url==$routes["signup"]){
-        $handler->createUser($method);
+        $handler->createUser();
     }
     else if($url==$routes["index"]){
         $handler->indexRoute();
