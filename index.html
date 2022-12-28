@@ -27,13 +27,10 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-    
-     <!-- font poppins -->
-    <style> 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap'); 
-    </style>
 
-   
+    <!-- font poppins -->
+    <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap'); </style>
+
     <title>ALUMNI</title>
 
 </head>
@@ -42,7 +39,7 @@
   <section id="Top">
   <!-- Nav Bar -->
      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="index.html">ALUMNI</a>
+        <a class="navbar-brand pageName" href="index.html"> ALUMNI</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,7 +53,7 @@
             </li>
             <!-- about button -->
             <li class="nav-item">
-              <a class="nav-link" href="">About</a>
+              <a class="nav-link" href="#about-us">About</a>
             </li>
             <!-- login button -->
             <li class="nav-item">
@@ -75,7 +72,7 @@
 
           <!--Button inside top div-->
           <button type="button" class="Top-button btn btn-outline-dark btn-lg Top-button">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i> Join      <!--Signup -->
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> <a href="login.html"></a> Join      <!--Signup -->
           </button>
           <button type="button" class="Top-button btn btn-outline-dark btn-lg Top-button">
             <i class="fa-brands fa-wpexplorer"></i> 
@@ -86,15 +83,72 @@
     </div>
   </section>
 
-    <div class="newStudent">
-      
+    <div class="about-section">
+      <h1 class="aboutHead">About Us</h1>
+      <p class="abh">We are a group of student pursuing Diploma in Computer Enginnering.</p>
+      <p class="abh">This is a website for student welfare which is developed during winter training project under the supervision of <strong>Aziz Sir</strong>.</p>
+    </div>
+    
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="" alt="Yusuf" style="width:100%">
+          <div class="container">
+            <h2>MD YUSUF AZAM</h2>
+            <p class="title">Web Developer</p>
+            <p>I am a final year student</p>
+            <p></p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="" alt="kaif" style="width:100%">
+          <div class="container">
+            <h2>MD KAIF IMTEYAZ</h2>
+            <p class="title">Web Developer</p>
+            <p>I am a final year student.</p>
+            <p>kaifimteyaz.k@gmail.com</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="" alt="hanzala" style="width:100%">
+          <div class="container">
+            <h2>HANZALA TAFZEEL</h2>
+            <p class="title">Python trainer</p>
+            <p>I am good at training python (machine learning).</p>
+            <p></p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="" alt="faisal" style="width:100%">
+          <div class="container">
+            <h2>MD FAISAL ALAM</h2>
+            <p class="title">Designer</p>
+            <p>I am a web desginer</p>
+            <p></p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
     </div>
 
 
         <!-- Footer -->
 
     <footer id="footer">      
-          <a class=" social-icon fa-brands fa-facebook btn btn-outline-light  btn-block" href=""></a> 
+          <a class="social-icon fa-brands fa-facebook btn btn-outline-light  btn-block" href=""></a> 
       
           <a class="social-icon fa-brands fa-twitter btn btn-outline-light btn-block" href="">
 
@@ -102,8 +156,7 @@
           
           <a class="social-icon fa-solid fa-envelope btn btn-outline-light btn-block" href=""></a>
 
-          <p class="copyright"
-          >© Copyright ALUMNI</p>
+          <p class="copyright">© Copyright ALUMNI</p>
     </footer>
     
 
