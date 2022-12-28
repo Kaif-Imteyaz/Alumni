@@ -51,7 +51,7 @@
                     </li>
                     <!-- about button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="">About</a>
+                        <a class="nav-link" id="signup" href="#signup" value="signup">sign Up</a>
                     </li>
                     <!-- login button -->
                     <li class="nav-item">
@@ -86,7 +86,7 @@
             <!-- signup flip  -->
             <div class="flip-card-back">
                 
-                <form action="#" method="post">
+                <form action="#signup" method="post">
                     <div class="image">
 
                         <img src="userprofile.png" alt="">
@@ -98,10 +98,9 @@
                         <option value="Faculty">Faculty Member</option>
                     </select>
                     <input type="text" name="name" placeholder="Name">
-                    <input type="text" name="Id" placeholder="Student Id/Faculty Id/Alumni Id ">
+                    <input type="text" name="Id" placeholder="Student Id/ Faculty Id ">
                     <input type="email" name="email" required placeholder="Email">
                     <input placeholder="Year of Joining"  type="text" onfocus="(this.type='date')" id="date">
-                   
                     <input type="password" name="password" required placeholder="enter your password">
 
                     <input type="submit" name="submit" value="Register" class="form-btn">
@@ -127,7 +126,7 @@
 
             <a class="social-icon fa-solid fa-envelope btn btn-outline-light btn-block" href=""></a>
 
-            <p>© Copyright ALUMNI</p>
+            <p class="copyright">© Copyright ALUMNI</p>
     </footer>
 
 
