@@ -1,13 +1,30 @@
 <?php
     //this file containes handler functions for each routes
+
     require "handlers.php";
+
+    // header('Content-Type:application/json');
+    //handling CORS[cross origin request sharing]
+    //browser before sending the actual request send a preflight request with origin request header
+    if( $_SERVER['REQUEST_METHOD']=='OPTIONS'){
+        header('Access-Control-Allow-Origin:http://127.0.0.1:5500');
+        header('Access-Control-Allow-Headers:content-type');
+        header('Access-Control-Allow-Method:POST,GET,OPTIONS');
+        exit;
+    }   
+    
+    if(isset($_SERVER['HTTP_ORIGIN'])){
+        header('Access-Control-Allow-Origin:http://127.0.0.1:5500');
+    }
+
     $handler=new handler();
 
     //acceptable routes in our system
-    $routes=array("index"=>"/","signup"=>"/createUser","login"=>"/createSession","logout"=>"/destroySession");
+    $routes=array("index"=>"/","signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession");
  
     //extracting the url from the request
     $url = $_SERVER["REQUEST_URI"];
+
     //extracting the request method.
     $method = $_SERVER["REQUEST_METHOD"];
 

@@ -10,7 +10,6 @@ class handler{
     }
     function createUser(){
         //this function will only be called when the method is post. else 403 response code will be sent to the user.
-
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             //extracting data from the req body. 
             $jsonData = file_get_contents("php://input");
@@ -20,7 +19,9 @@ class handler{
             //calling validateParameters function for validating each parameter.
             $this->validateParameters($data);
 
+            echo json_encode($data);
             //storing the value to the 
+            // $this->storeValue($data);
         }
         else{
             http_response_code(403);
@@ -139,6 +140,19 @@ class handler{
          $data->currentYear=$currentYear;
          $data->password=$password;
     }
+    private function storeValue($data){
+        //db is an object of class Database. Database class has a getConnection function which returns connection object.
+        $connection = $this->db->getConnection();
+        $sql = "insert into " . $data->type . " (name,email,id,password,year) values (?,?,?,?)";
+        $statement = $connection->prepare($sql);
+        $statement->bind_param("ssssi", $data->name, $data->email, $data->id, $data->password, $data->currentYear);
 
+        $result=$statement->execute();
+        echo "Data successfully saved";
+        var_dump($result);
+
+        $statement->close();
+        $connection->close();
+    }
 }
 ?>
