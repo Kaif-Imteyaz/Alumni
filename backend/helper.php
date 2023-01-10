@@ -14,7 +14,7 @@ class Helper
 
         //validating $type [type of account]
         //acceptable type value -> alumini, faculty, student
-        $type = gettype($type) == 'string' && array_search($type, ['alumini', 'faculty', 'student']) ? $type : false;
+        $type = gettype($type) == 'string' && array_search($type, ['alumni', 'faculty', 'student']) ? $type : false;
         if (!$type) {
             echo "please specify the type of account";
             exit;
