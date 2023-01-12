@@ -6,6 +6,7 @@
     // header('Content-Type:application/json');
     //handling CORS[cross origin request sharing]
     //browser before sending the actual request send a preflight request with origin request header
+
     if( $_SERVER['REQUEST_METHOD']=='OPTIONS'){
         header('Access-Control-Allow-Origin:http://127.0.0.1:5500');
         header('Access-Control-Allow-Headers:content-type');
@@ -16,6 +17,7 @@
     if(isset($_SERVER['HTTP_ORIGIN'])){
         header('Access-Control-Allow-Origin:http://127.0.0.1:5500');
     }
+
 
     $handler=new handler();
 
