@@ -67,7 +67,7 @@
         <div id="flip-card">
             <div class="flip-card-front">
 
-                <form action="#" method="post">
+                <form action="login.php" method="post" id="login">
                     <div class="image">
 
                         <img src="userprofile.png" alt="">
@@ -86,22 +86,22 @@
             <!-- signup flip  -->
             <div class="flip-card-back">
                 
-                <form action="#signup" method="post">
+                <form action="http://localhost:8000/createAccount" method="POST" id="register">
                     <div class="image">
-
                         <img src="userprofile.png" alt="">
                     </div>
-                    <select name="Role" id="Role">
+                    <div class="formError"></div>
+                    <select name="type" id="type">
                         <option value="null">I am a </option>
-                        <option value="Student">Bonafide Student</option>
-                        <option value="Alumni">Graduate Student(Alumni)</option>
-                        <option value="Faculty">Faculty Member</option>
+                        <option value="student">Bonafide Student</option>
+                        <option value="alumni">Graduate Student(Alumni)</option>
+                        <option value="faculty">Faculty Member</option>
                     </select>
-                    <input type="text" name="name" placeholder="Name">
-                    <input type="text" name="Id" placeholder="Student Id/ Faculty Id ">
-                    <input type="email" name="email" required placeholder="Email">
-                    <input placeholder="Year of Joining"  type="text" onfocus="(this.type='date')" id="date">
-                    <input type="password" name="password" required placeholder="enter your password">
+                    <input type="text" id="name" name="name" placeholder="Name">
+                    <input type="text" id="id" name="id" placeholder="Student Id/ Faculty Id ">
+                    <input type="email" id="email" name="email"  placeholder="Email">
+                    <input placeholder="Year of Joining" id="yoj" name="yoj" type="text" onfocus="(this.type='date')">
+                    <input type="password" name="password" id="password"  placeholder="Enter your password">
 
                     <input type="submit" name="submit" value="Register" class="form-btn">
                     <p>Already have an account? <a id="flip-card-btn-turn-to-front"href="#">Login</a></p>
