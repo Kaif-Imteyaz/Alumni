@@ -7,27 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap-css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
     <!--Stylesheet-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="login.css">
     <!--font-icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Bootstrap-js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+    
     <!-- font poppins -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-    </style>
+        </style>
 
-    <script src="login.js"></script>
+<script src="login.js"></script>
 
-    <title>ALUMNI</title>
+<title>ALUMNI</title>
 
 </head>
 
@@ -67,13 +67,22 @@
         <div id="flip-card">
             <div class="flip-card-front">
 
-                <form action="login.php" method="post" id="login">
+                <form action="http://localhost:8000/createSession" method="post" id="login">
                     <div class="image">
 
                         <img src="userprofile.png" alt="">
                     </div>
-                    <input type="email" name="email" required placeholder="enter your email">
-                    <input type="password" name="password" required placeholder="enter your password">
+                    <div class="formError"></div>
+
+                    <select name="type" id="type">
+                        <option value="null">I am a </option>
+                        <option value="student">Bonafide Student</option>
+                        <option value="alumni">Graduate Student(Alumni)</option>
+                        <option value="faculty">Faculty Member</option>
+                    </select>
+                    <input type="email" name="email"  placeholder="enter your email">
+                    <input type="password" name="password"  placeholder="enter your password">
+
 
                     <input type="submit" name="submit" value="Login now" class="form-btn">
                     <p>don't have an account? <a id="flip-card-btn-turn-to-back" href="#">Register</a></p>
@@ -85,8 +94,7 @@
 
             <!-- signup flip  -->
             <div class="flip-card-back">
-                
-                <form action="http://localhost:8000/createAccount" method="POST" id="register">
+                <form action="http://localhost/createAccount" method="POST" id="register">
                     <div class="image">
                         <img src="userprofile.png" alt="">
                     </div>
