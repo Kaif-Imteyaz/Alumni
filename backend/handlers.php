@@ -1,5 +1,4 @@
 <?php
-use LDAP\Result;
 require('./config/Database.php');
 require('./helper.php');
 
@@ -24,16 +23,18 @@ class handler{
                 //calling validateParameters function for validating each parameter.
                 $this->helper->validateParameters($data);
 
-
                 //storing the value to the 
                 $this->storeUserData($data);
+
+                echo "user registered successfully";
+
+                exit;
             }
             catch(Exception $e){
                 http_response_code(500);
                 echo $e->getMessage();
                 exit;
             }
-           
         }
         else{
             http_response_code(405);
@@ -68,9 +69,7 @@ class handler{
                         
                          $statement->close();
                          $this->connection->close();
-                        //  echo $result->fetch_assoc()['password'];
-                        //  exit;
-
+                
                          if($row=$result->fetch_assoc()){
                              //user exits 
                              //matching the password
@@ -83,16 +82,19 @@ class handler{
                                  //NOTE: the length of token is 10 characters long.
                                  $token=$this->helper->generate_token();
                                  
+                                 $tokenExpiry=time() + 24 * 60 * 60;
                                  //store the token to the database
-                                 $this->storeToken($result->fetch_assoc()['id'],$type,$token);
+                                 $this->storeToken($row['id'],$type,$token,$tokenExpiry);
  
                                  //After the token has successully been saved into the database.
                                  //create a tokenPayload object [stdClass allows to create object without any class]
                                  $tokenPaylod = new stdClass();
                                  //add properties such as token,id of the user, and type of account of the user.
                                  $tokenPaylod->token = $token;
-                                 $tokenPaylod->id = $result->fetch_assoc()['id'];
+                                 $tokenPaylod->id = $row['id'];
                                  $tokenPaylod->type = $type;
+                                 //the token will expire after one day.
+                                 $tokenPaylod->expiry = $tokenExpiry;
                                  
                                  //converting the tokenPaylod object into json using json_encode();
                                  $tokenPaylodString = json_encode($tokenPaylod);
@@ -134,6 +136,7 @@ class handler{
                 exit;
             }
         }
+
         else{
             http_response_code(405);
             echo "invalid method";
@@ -141,6 +144,37 @@ class handler{
         }
     }
     
+
+    //handler for logout, it will called when user hit /destroysession url
+    function destroySession(){
+        if($_SERVER['REQUEST']=="DELETE"){
+            //get the url;
+            $url = $_SERVER['REQUEST_URI'];
+
+            //convert the url into associative array in php
+            $parsedurl = parse_url($url);
+
+            //get the query part of the parsedurl and parse it again to get the associative array with all key-value pairs.
+            parse_str($parsedurl['query'], $param);
+
+            if($param['type'] && $param['id']){
+                //delete the user from the database
+
+                //delete all the tokens related to the user 
+            }
+            else{
+                http_response_code(400);
+                echo "cannot log you out";
+                exit;
+            }
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
+
     //this handler will be called whenever user hit url not specified in our system.
     function exceptionalPath(){
         die("invalid url");
@@ -149,17 +183,16 @@ class handler{
     public function storeUserData($data){
         //db is an object of class Database. Database class has a getConnection function which returns connection object.
         try {
-
             $this->connection = $this->db->getConnection();
 
             $sql = "insert into ".$data->type." (name,email,id,password,currentyear,yearofjoining) values (?,?,?,?,?,?)";
+
             $statement = $this->connection->prepare($sql);
             $statement->bind_param("ssssis", $data->name, $data->email, $data->id, $data->password, $data->currentYear, $data->yoj);
             $statement->execute();
             $statement->close();
             $this->connection->close();
-            http_response_code(200);
-            echo "Data successfully saved";
+         
         } catch (Exception $e) {
             http_response_code(500);
             echo $e->getMessage();
@@ -168,23 +201,18 @@ class handler{
       
     }
 
-    function storeToken($id,$type,$token){
-        $this->connection = $this->db->getConnection();
+    function storeToken($id,$type,$token,$expiry){
         try{
-            $statement = $this->connection->prepare("insert into session (type,id,token) values(?,?,?)");
-            $statement->bind_param("sss", $type, $id, $token);
+            $this->connection = $this->db->getConnection();
+            $statement = $this->connection->prepare("insert into token (type,id,token,expiry) values(?,?,?,?)");
+            $statement->bind_param("sssi", $type, $id, $token,$expiry);
             //if the token already exists into the session table it will throw an exception.
             $statement->execute();
-            $result = $statement->affected_rows();
-            if($result>0){
-                echo "token saved successfully";
-            }
+        
             $statement->close();
             $this->connection->close();
         }
         catch(Exception $e){
-            $statement->close();
-            $this->connection->close();
             http_response_code(500);
             echo $e->getMessage();
             exit;
