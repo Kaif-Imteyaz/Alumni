@@ -1,0 +1,55 @@
+body{
+    background-color: #f3efe0;
+    text-align: center;
+}
+
+#jamia{
+    text-align: center;
+    font-size: 30px;
+}
+
+img{
+    opacity: 0.5;
+}
+
+#Maps{
+    text-align: center;
+    position: absolute;
+    justify-content: center;
+}
+
+#polytech{
+    text-align: left;
+    /* justify-content: left; */
+}
+
+#polytech img{
+    width: 300px;
+    height: 300px;
+    opacity: 0.9;
+}
+
+#programs{
+    position: absolute;
+    justify-content: center;
+    padding-left: 150px;
+    padding-top: 100px;
+}
+
+#faculty{
+    text-align: left;
+    position:absolute;
+    justify-content: left;
+    padding-left: 100px;
+}
+
+#faculty img{
+    text-align: right;
+    position: absolute;
+    justify-content: right;
+    padding-left: 600px;
+    padding-top: 50px;
+    opacity: 0.9;
+}
+
+
