@@ -87,10 +87,10 @@
             <div class="flip-card-back">
                 
                 <form action="http://localhost:8000/createAccount" method="POST" id="register">
-                    <div id="formError"></div>
                     <div class="image">
                         <img src="userprofile.png" alt="">
                     </div>
+                    <div class="formError"></div>
                     <select name="type" id="type">
                         <option value="null">I am a </option>
                         <option value="student">Bonafide Student</option>
@@ -101,7 +101,7 @@
                     <input type="text" id="id" name="id" placeholder="Student Id/ Faculty Id ">
                     <input type="email" id="email" name="email"  placeholder="Email">
                     <input placeholder="Year of Joining" id="yoj" name="yoj" type="text" onfocus="(this.type='date')">
-                    <input type="password" name="password" id="password"  placeholder="enter your password">
+                    <input type="password" name="password" id="password"  placeholder="Enter your password">
 
                     <input type="submit" name="submit" value="Register" class="form-btn">
                     <p>Already have an account? <a id="flip-card-btn-turn-to-front"href="#">Login</a></p>

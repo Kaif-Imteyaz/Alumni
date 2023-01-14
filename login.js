@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
               let data={};
               for(let i=0;i<this.elements.length;i++){
                 if(this.elements[i].type!='submit'){
+                  if(this.elements[i].type=='date'){
+                    console.log(this.elements[i].value);
+                  }
                   data[this.elements[i].name]=this.elements[i].value;
                 }
               }
@@ -37,7 +40,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
               xhr.open(this.method,this.action);
 
               xhr.addEventListener("load",()=>{
-                console.log(xhr.response);
+                if(xhr.readyState!=200 && xhr.readyState!=201){
+                  let formError=document.querySelector('#register .formError');
+                  console.log(formError);
+                  formError.textContent=xhr.responseText.toUpperCase();
+                }
               })
 
               xhr.addEventListener('error',(err)=>{

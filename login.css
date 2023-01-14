@@ -1,6 +1,6 @@
 /* css for form  */
   #flip-card form .image img{
-    margin-top: 8%;
+    margin-top: 5%;
     height: 70px;
   }
   #flip-card .flip-card-back  {
@@ -33,7 +33,7 @@
 
   .flip-card-back form select{
     width: 76%;
-    margin-top: 1.25rem;
+    margin-top: 0.5rem;
     padding: 8px 15px;
     border: none;
     border-bottom: 1px solid #222222;
@@ -145,6 +145,11 @@ html, body
 #flip-card .flip-card-front p, #flip-card .flip-card-back p {
   display: block;
   font-size: 17px;
+}
+
+.formError{
+  font-size:0.75em;
+  margin-top:15px;
 }
 
 /* for mobile devices */

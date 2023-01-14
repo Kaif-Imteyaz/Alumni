@@ -14,11 +14,11 @@ class Helper
 
         //validating $type [type of account]
         //acceptable type value -> alumini, faculty, student
-<<<<<<< HEAD
+
         $type = gettype($type) == 'string' && array_search($type, ['alumni', 'faculty', 'student']) ? $type : false;
-=======
+
         $type = gettype($type) == 'string' && array_search($type, ['alumini', 'faculty', 'student'])>-1 ? $type : false;
->>>>>>> yusuf
+
         if (!$type) {
             http_response_code(400);
             echo "please specify the type of account";
@@ -87,10 +87,16 @@ class Helper
 
         //checking if the year of joining is less than or equal to the current year.
         if ($currentDate['year'] >= $yoj['year']) {
-            if ($currentDate['year'] == $yoj['year'] && $currentDate['month'] < $yoj['month']) {
-                http_response_code(400);
-                echo "You are yet to join Polytechnic!";
-                exit;
+            if ($currentDate['year'] == $yoj['year'] && $currentDate['month'] <= $yoj['month']) {
+                if($currentDate['day']<$yoj['day']){
+                    http_response_code(400);
+                    echo "You are yet to join Polytechnic!";
+                    exit;
+                }
+                else{
+                    $currentYear = $currentDate['year'] - $yoj['year'] > 0 ? $currentYear : 1;
+                }
+               
             } else {
                 $currentYear = $currentDate['year'] - $yoj['year'];
             }
