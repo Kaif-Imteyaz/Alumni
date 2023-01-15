@@ -1,5 +1,5 @@
 body{
-    background-color:#f3efe0;
+    background-color:#ffffff;
     font-family: 'Poppins', sans-serif;
 }
 html {
@@ -10,8 +10,10 @@ html {
     margin-left: 2%;
 }
 .navbar{
-    background-color:#222222;
-    color: #3e4444;
+    background-color:#047a3bed;
+}
+.nav-link{
+  color: #ffffff;
 }
 .collapse{
     margin-right: 2%;
@@ -24,7 +26,7 @@ h1{
 }
 h2{
     text-align: center;
-    padding: 3% 15%;
+    /* padding: 3% 15%; */
     color: #222222;
     font-family: 'Poppins', sans-serif;
     size: 100%;
@@ -39,15 +41,41 @@ h2{
 }
 
 .Top-head{
-    /* padding: 15% 15%; */
+  background-image: linear-gradient(to bottom, #e2f6ebed, rgba(198, 222, 241, 0.5)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
+  padding: 15% 15%;
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: 100% 100%;
     background-blend-mode: normal;
 }
+.map_section h2, p {
+  text-align: left;
+  padding-left: 2%;
+  margin-left: 1%;
+}
+.map-text{
+  padding: 3% 5%;
+}
+.maps{
+  padding: 2%;
+}
+
+/* explore */
+#explore{
+  padding: 2%;
+  text-align: left;
+}
+.about-jmi{
+  text-align: left;
+}
+.abt-jmi{
+  text-align: justify;
+  padding: 0;
+  margin: 0;
+}
 
 #footer{
-    background-color: #404040;
+    background-color: #047a3bed;
     text-align: center;
     padding: 2% 2%;
 }
@@ -81,7 +109,7 @@ h2{
     .about-section {
       padding: 50px;
       text-align: center;
-      background-color: #404040;
+      background-color: rgb(77, 80, 76);
       color: white;
     }
 
@@ -122,16 +150,6 @@ h2{
     .button:hover {
       background-color: #555;
     }
-
-    /* after top div */
-    .map_section{
-      display: flex;
-      width: 100%;
-    }
-    .text{
-      width: 70%;
-    }
-  
     
     @media screen and (max-width: 650px) {
       .column {
