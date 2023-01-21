@@ -1,3 +1,4 @@
+/* Profile section  */
 .profile{
     display: flex;
     height: 15rem;
@@ -19,6 +20,23 @@
 }
 .prof_pic img{
     border-radius: 100%;
-   
-    
+}
+
+/* course section  */
+
+.course{
+    align-items: center;
+    background-color: #cbd2dc;
+    border: 2px solid rgb(153, 145, 145);
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+
+}
+#your_course{
+    margin-left:172%;
+}
+.semester{
+    /* background-color: green; */
+    height: 15em;
 }
