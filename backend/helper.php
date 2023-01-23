@@ -7,7 +7,7 @@ class Helper
         $type = $data->type;
         $name = $data->name;
         $email = $data->email;
-        $id = $data->id;
+        $id = $data->userId;
         $yoj = $data->yoj;
         $password = $data->password;
 
@@ -138,7 +138,7 @@ class Helper
         $data->type = $type;
         $data->name = $name;
         $data->email = $email;
-        $data->id = $id;
+        $data->userId = $id;
         $data->currentYear = $currentYear;
         $data->password = $password;
     }

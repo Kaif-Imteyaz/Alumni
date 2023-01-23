@@ -1,3 +1,8 @@
+p{
+  text-align: center;
+}
+
+
 /* css for form  */
   #flip-card form .image img{
     margin-top: 5%;
@@ -38,7 +43,13 @@
     border: none;
     border-bottom: 1px solid #222222;
   }
-  
+  .flip-card-front form select{
+    width: 76%;
+    margin-top: 0.5rem;
+    padding: 8px 15px;
+    border: none;
+    border-bottom: 1px solid #222222;
+  }
   .flip-card-front  form input {
     width: 76%;
     padding: 10px 15px;
