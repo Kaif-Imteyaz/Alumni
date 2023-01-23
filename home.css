@@ -1,7 +1,7 @@
 /* Profile section  */
 .profile{
     display: flex;
-    height: 15rem;
+  
 }
 .prof_text{
     /* background-color: black; */
@@ -24,19 +24,16 @@
 
 /* course section  */
 
-.course{
-    align-items: center;
-    background-color: #cbd2dc;
-    border: 2px solid rgb(153, 145, 145);
-    display: flex;
-    justify-content: center;
-    padding: 1%;
 
+/* Q&a section / */
+.container{
+    /* width: 70%; */
+    /* background-color: yellow; */
 }
-#your_course{
-    margin-left:172%;
-}
-.semester{
-    /* background-color: green; */
-    height: 15em;
+.box-content{
+    /* background-color: red; */
+    margin: 20px;
+    text-align: left;
+    border: 2px solid black;
+    padding: 20px;
 }
