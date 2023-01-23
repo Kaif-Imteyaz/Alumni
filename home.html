@@ -24,7 +24,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
     </style>
-
+  
     <title>ALUMNI</title>
 
 </head>
@@ -53,7 +53,7 @@
                     </li>
                     <!-- login button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Logout</a>
+                        <a class="nav-link" id="logout-btn" >Logout</a>
                     </li>
                 </ul>
             </div>
@@ -119,6 +119,38 @@
                 <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
+
+        <script >
+            let logoutBtn=document.querySelector('#logout-btn');
+            logoutBtn.addEventListener('click',(e)=>{
+                let session=JSON.parse(localStorage.getItem("token"));
+
+                if(typeof(session)=="object" && session && Object.keys(session).length>0){
+                    let xhr=new XMLHttpRequest();
+                    let url=`http://localhost:8000/destroySession?id=${session.id}`;
+                    let method='DELETE';
+                    xhr.open(method,url);
+
+                    xhr.addEventListener("load",()=>{
+                        if(xhr.status===200){
+                            localStorage.removeItem("token");
+                            window.location="http://127.0.0.1:5500/Alumni/index.html";
+                        }
+                        else{
+                            console.log(xhr.response);
+                        }
+                    })
+                    xhr.addEventListener("error",(err)=>{
+                        console.log(err);
+                    })
+                    xhr.send();
+                }
+                else{
+                    window.location="http://127.0.0.1:5500/Alumni/index.html";
+                }
+            })
+            
+        </script>
 
 </body>
 
