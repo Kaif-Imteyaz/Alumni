@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('flip-card').classList.toggle('do-flip');
         };
 
-        
+
+        let token={};
+
         function sendRequest(url,method,queryString,data,callback){
 
             data= typeof(data)=='object' && data!=null ? data : {};
@@ -48,8 +50,22 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send(jsonData);
         }
 
+
+        function setToken(token){
+          localStorage.setItem("token",token);
+        }
+
+        function getToken(){
+          try{
+            return JSON.parse(localStorage.getItem("token"));
+          }
+          catch(e){
+            console.log(e.error);
+          }
+        }
+
         function formResponseHandler(formId,requestPayload,responsePayload){
-            if(formId=='signup'){
+            if(formId=='register'){
               //login the user after they have successfully been registered.
               let data={
                 "type":requestPayload.type,
@@ -61,26 +77,45 @@ document.addEventListener('DOMContentLoaded', function() {
                       document.querySelector("#"+formId+" .formError").textContent=response;
                   }
                   else{
-                    //we will receive the token
+                    let parsedResponse=JSON.parse(response);
+                    token={...parsedResponse};
+                    //store the session in the localStorage;
+                    setToken(response);
+                    window.location.href="http://127.0.0.1:5500/Alumni/index.html"
                   }
               })
             }
 
             if(formId=="login"){
-                //we have received the token
-                console.log(responsePayload);
+                 //store the session in the localStorage;
+                try{
+                  let parsedResponse=JSON.parse(responsePayload);
+                  token={...parsedResponse};
+                  setToken(responsePayload);
+                }
+                catch(e){
+                  console.log(e.error);
+                }
+                
+                //redirect user
+                window.location.href="http://127.0.0.1:5500/Alumni/index.html";  
             } 
         }
         
         //-----------------------------
 
         let forms=document.querySelectorAll('form');
-        forms.forEach(form=>{
-          form.addEventListener('submit',function(e){
+        for(let i=0;i<forms.length;i++){
+          forms[i].addEventListener('change',function(){
+            document.querySelector("#"+this.id+" .formError").textContent="";
+          })
+
+          forms[i].addEventListener('submit',function(e){
             e.preventDefault();
             let data={};
             let method=this.method.toUpperCase();
             let url=this.action;
+            let formId=this.id;
             let queryString={};
 
             for(let i=0;i<this.elements.length;i++){
@@ -92,18 +127,20 @@ document.addEventListener('DOMContentLoaded', function() {
             //sending the data to the backend 
            sendRequest(url,method,queryString,data,(statusCode,response)=>{
               //all bad requests
-                if(statusCode!=200 && statusCode!=201){
+                if(statusCode>399){
                     let error=typeof(response)=='string' && response.length<60?response:"an error has occured";
-                    console.log(error);
-                    document.querySelector('#'+this.id+" .formError").textContent=error.toUpperCase();
+                    let selector="#"+formId+" .formError";
+                    document.querySelector(selector).textContent=error.toUpperCase();
                 }
                 else{
-                  formResponseHandler(this.id,data,response);   
+                  console.log("else");
+                  document.querySelector("#"+formId+" .formError").textContent="";
+                  formResponseHandler(formId,data,response);   
                 }
            });
 
       })
-    })
+    }
 
 
 

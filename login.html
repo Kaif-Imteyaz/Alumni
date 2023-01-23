@@ -94,7 +94,7 @@
 
             <!-- signup flip  -->
             <div class="flip-card-back">
-                <form action="http://localhost/createAccount" method="POST" id="register">
+                <form action="http://localhost:8000/createAccount" method="POST" id="register">
                     <div class="image">
                         <img src="userprofile.png" alt="">
                     </div>
@@ -106,7 +106,7 @@
                         <option value="faculty">Faculty Member</option>
                     </select>
                     <input type="text" id="name" name="name" placeholder="Name">
-                    <input type="text" id="id" name="id" placeholder="Student Id/ Faculty Id ">
+                    <input type="text" id="userId" name="userId" placeholder="Student Id/ Faculty Id ">
                     <input type="email" id="email" name="email"  placeholder="Email">
                     <input placeholder="Year of Joining" id="yoj" name="yoj" type="text" onfocus="(this.type='date')">
                     <input type="password" name="password" id="password"  placeholder="Enter your password">

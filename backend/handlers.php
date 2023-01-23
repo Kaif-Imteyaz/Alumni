@@ -26,8 +26,8 @@ class handler{
                 //storing the value to the 
                 $this->storeUserData($data);
 
+                http_response_code(200);
                 echo "user registered successfully";
-
                 exit;
             }
             catch(Exception $e){
@@ -100,9 +100,8 @@ class handler{
                                  $tokenPaylodString = json_encode($tokenPaylod);
                                  
                                  //send the 200 ok status code with the token data to the user.
-                                 http_response_code(200);
+                                http_response_code(200);
                                  echo $tokenPaylodString;
- 
                                  exit;
                              }
                              else{
@@ -147,20 +146,39 @@ class handler{
 
     //handler for logout, it will called when user hit /destroysession url
     function destroySession(){
-        if($_SERVER['REQUEST']=="DELETE"){
+        if($_SERVER['REQUEST_METHOD']=="DELETE"){
             //get the url;
             $url = $_SERVER['REQUEST_URI'];
 
             //convert the url into associative array in php
             $parsedurl = parse_url($url);
-
+            $param = array();
             //get the query part of the parsedurl and parse it again to get the associative array with all key-value pairs.
             parse_str($parsedurl['query'], $param);
 
-            if($param['type'] && $param['id']){
-                //delete the user from the database
-
+            if($param['id']){
                 //delete all the tokens related to the user 
+                try {
+                    $this->connection = $this->db->getConnection();
+                    $sql = "DELETE from token where id=?";
+                    $statement = $this->connection->prepare($sql);
+                    $statement->bind_param("s", $param["id"]);
+
+                    $statement->execute();
+                    $result=$statement->affected_rows;
+                    $statement->close();
+                    $this->connection->close();
+
+                    http_response_code(200);
+                    echo $result;
+        
+                    exit;
+                }
+                catch(Exception $e){
+                    http_response_code(500);
+                    echo $e->getCode();
+                    exit;
+                }
             }
             else{
                 http_response_code(400);
@@ -177,7 +195,9 @@ class handler{
 
     //this handler will be called whenever user hit url not specified in our system.
     function exceptionalPath(){
-        die("invalid url");
+        http_response_code(404);
+        echo "resource not found";
+        exit;
     }
     
     public function storeUserData($data){
@@ -188,12 +208,17 @@ class handler{
             $sql = "insert into ".$data->type." (name,email,id,password,currentyear,yearofjoining) values (?,?,?,?,?,?)";
 
             $statement = $this->connection->prepare($sql);
-            $statement->bind_param("ssssis", $data->name, $data->email, $data->id, $data->password, $data->currentYear, $data->yoj);
+            $statement->bind_param("ssssis", $data->name, $data->email, $data->userId, $data->password, $data->currentYear, $data->yoj);
             $statement->execute();
             $statement->close();
             $this->connection->close();
          
         } catch (Exception $e) {
+            if($e->getCode()==1062){
+                http_response_code(400);
+                echo "user already exists";
+                exit;
+            }
             http_response_code(500);
             echo $e->getMessage();
             exit;
