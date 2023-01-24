@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <!--font-icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Bootstrap-js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <!-- font poppins -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    </style>
+  
+    <title>ALUMNI</title>
+
+</head>
+
+<body>
+
+    <section id="Top">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <a class="navbar-brand pageName" href="index.html"> ALUMNI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NAvbar buttons collapsable when the screen size is reduced -->
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Contact button -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <!-- about button -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">About</a>
+                    </li>
+                    <!-- login button -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout-btn" >Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="profile">
+            <div class="prof_text">
+                <h2>Hello, <br> User Name</h2>
+                <p>Tanta petere igitur, ne sineres memini <br> fieri etiam aliquam inclinationem ad 
+                    <br> consequendum minima.
+                    Instead, <br>
+                    oportet omnino quieti de rebus</p>
+            </div>
+            <div class="prof_pic">
+               <img src="profile_pic.jpg" alt="" width="150">
+               <h4>Profile</h4>
+            </div>
+        </section>
+        <!-- course section  -->
+       <div class="course">
+
+       </div>
+
+        <!-- Q&A Section  -->
+         <div class="container">
+
+         </div>
+         <script type="module" src="quesAns.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <!-- Footer -->
+
+        <footer id="footer">
+            <a class="social-icon fa-brands fa-facebook btn btn-outline-light  btn-block" href=""></a>
+
+            <a class="social-icon fa-brands fa-twitter btn btn-outline-light btn-block" href="">
+
+                <a class="social-icon fa-brands fa-instagram btn btn-outline-light btn-block" href=""></a>
+
+                <a class="social-icon fa-solid fa-envelope btn btn-outline-light btn-block" href=""></a>
+
+                <p class="copyright">© Copyright ALUMNI</p>
+        </footer>
+
+
+        <script >
+            let logoutBtn=document.querySelector('#logout-btn');
+            logoutBtn.addEventListener('click',(e)=>{
+                let session=JSON.parse(localStorage.getItem("token"));
+
+                if(typeof(session)=="object" && session && Object.keys(session).length>0){
+                    let xhr=new XMLHttpRequest();
+                    let url=`http://localhost:8000/destroySession?id=${session.id}`;
+                    let method='DELETE';
+                    xhr.open(method,url);
+
+                    xhr.addEventListener("load",()=>{
+                        if(xhr.status===200){
+                            localStorage.removeItem("token");
+                            window.location="http://127.0.0.1:5500/Alumni/index.html";
+                        }
+                        else{
+                            console.log(xhr.response);
+                        }
+                    })
+                    xhr.addEventListener("error",(err)=>{
+                        console.log(err);
+                    })
+                    xhr.send();
+                }
+                else{
+                    window.location="http://127.0.0.1:5500/Alumni/index.html";
+                }
+            })
+            
+        </script>
+
+</body>
+
+</html>
