@@ -1,6 +1,7 @@
 /* Profile section  */
 .profile{
     display: flex;
+    padding-bottom: 5%;
   
 }
 .prof_text{
@@ -25,10 +26,32 @@
 /* course section  */
 
 
+
 /* Q&a section / */
-.container{
-    /* width: 70%; */
-    /* background-color: yellow; */
+.formd{
+    margin: 2rem ;
+}
+.qaform{
+    margin-left: 25%;
+
+    width: 50%;
+    border: 2px;
+    background-color: rgb(160, 238, 163);
+    text-align: left;
+    padding: 5%;
+}
+.qaform input, .qsubmit,#qds{
+    width: 70%;
+    height: 2.2rem;
+    margin:2% 0 1%  0;
+    margin-left: 15%;
+}
+
+#qds{
+    width: 70%;
+    height: 4.2rem;
+    margin:2% 0 1%  0;
+    margin-left: 15%;
 }
 .box-content{
     /* background-color: red; */
