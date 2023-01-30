@@ -11,7 +11,6 @@
     <!--Stylesheet-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
-    
     <!--font-icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -75,18 +74,9 @@
         </section>
         <!-- course section  -->
        <div class="course">
-       </div >
-       <!-- ask Question  -->
-            <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            <div class="form-popup formd " id="myForm">
-                <form action="/action_page.php" class="qaform">
-                    <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
-               <input type="text" placeholder="Your Question" required >
-               <br>
-               <textarea placeholder="Question Description" name="" id="qds" cols="30" rows="5"></textarea>
-               <button class="qsubmit ">Submit</button>
-            </form>
-        </div>
+
+       </div>
+
         <!-- Q&A Section  -->
          <div class="container">
 
@@ -108,15 +98,7 @@
                 <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
-        <script>
-            function openForm() {
-              document.getElementById("myForm").style.display = "block";
-            }
-            
-            function closeForm() {
-              document.getElementById("myForm").style.display = "none";
-            }
-            </script>
+
         <script >
             let logoutBtn=document.querySelector('#logout-btn');
             logoutBtn.addEventListener('click',(e)=>{

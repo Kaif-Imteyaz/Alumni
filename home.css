@@ -1,7 +1,11 @@
 /* Profile section  */
+body{
+    background-color:#f3efe0
+}
 .profile{
     display: flex;
-    height: 15rem;
+    padding-bottom: 5%;
+  
 }
 .prof_text{
     /* background-color: black; */
@@ -12,7 +16,6 @@
     padding: 43px 0px 0 11%;
 }
 .prof_text h2{
-    /* color: white; */
     padding: 3%;
     padding-bottom: 0;
     text-align: left;
@@ -23,20 +26,81 @@
 }
 
 /* course section  */
+.open-button {
+    background-color: #158247;
+    color: white;
+    padding: 16px 20px;
+    position: fixed;
+    top: 85%;
+    left: 93%;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    /* opacity: 0.8; */
+    /* width: 180px; */
+  }
 
-.course{
-    align-items: center;
-    background-color: #cbd2dc;
-    border: 2px solid rgb(153, 145, 145);
-    display: flex;
-    justify-content: center;
-    padding: 1%;
+  .cancel{
+     background-color: transparent;
+     border: none;
+     position: absolute;
+     top: 5%;
+     left: 71%;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    z-index: 9;
+  }
+ 
 
+/* Q&a section / */
+
+.qaform{
+    margin-left: 25%;
+    width: 50%;
+    border: 2px;
+    background-color: #fff;
+    border-radius: 9px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: left;
+    padding: 5%;
 }
-#your_course{
-    margin-left:172%;
+.qaform input, .qsubmit,#qds{
+
+    border: none;
+    padding-left: 16px;
+    width: 70%;
+    height: 2.2rem;
+    margin:2% 0 1%  0;
+    border: none;
+    border-bottom: 1px solid #222222;
+
+    margin-left: 15%;
 }
-.semester{
-    /* background-color: green; */
-    height: 15em;
+.qsubmit{
+    background-color: #158247;
+    width: 20%;
+    padding: 0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#qds{
+    width: 70%;
+    height: 5.2rem;
+    margin:2% 0 1%  0;
+    margin-left: 15%;
+}
+.box-content{
+    /* background-color: red; */
+    margin: 20px;
+    text-align: left;
+    border: 2px solid black;
+    padding: 20px;
 }
