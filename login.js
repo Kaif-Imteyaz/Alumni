@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
 
-        let token={};
-
         function sendRequest(url,method,queryString,data,callback){
 
             data= typeof(data)=='object' && data!=null ? data : {};
@@ -55,14 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.setItem("token",token);
         }
 
-        function getToken(){
-          try{
-            return JSON.parse(localStorage.getItem("token"));
-          }
-          catch(e){
-            console.log(e.error);
-          }
-        }
+       
 
         function formResponseHandler(formId,requestPayload,responsePayload){
             if(formId=='register'){
@@ -77,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
                       document.querySelector("#"+formId+" .formError").textContent=response;
                   }
                   else{
-                    let parsedResponse=JSON.parse(response);
-                    token={...parsedResponse};
                     //store the session in the localStorage;
                     setToken(response);
                     window.location.href="http://127.0.0.1:5500/Alumni/index.html"

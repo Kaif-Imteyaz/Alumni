@@ -91,8 +91,9 @@ class handler{
                                  $tokenPaylod = new stdClass();
                                  //add properties such as token,id of the user, and type of account of the user.
                                  $tokenPaylod->token = $token;
-                                 $tokenPaylod->id = $row['id'];
-                                 $tokenPaylod->type = $type;
+
+                                //  $tokenPaylod->id = $row['id'];
+                                //  $tokenPaylod->type = $type;
                                  //the token will expire after one day.
                                  $tokenPaylod->expiry = $tokenExpiry;
                                  
@@ -100,7 +101,7 @@ class handler{
                                  $tokenPaylodString = json_encode($tokenPaylod);
                                  
                                  //send the 200 ok status code with the token data to the user.
-                                http_response_code(200);
+                                 http_response_code(200);
                                  echo $tokenPaylodString;
                                  exit;
                              }
@@ -243,5 +244,65 @@ class handler{
             exit;
         }
     }
+
+
+    //file upload handler
+    function fileUpload(){
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            if(!isset($_FILES['file']) && !isset($_POST['branch']) && !isset($_POST['semester']) && !isset($_POST['title']) && !isset($_POST['name']) && !isset($_POST['description'])){
+                http_response_code(400);
+                echo "Missing required filed";
+                exit;
+            }
+            if($_FILES['file']['type']=='application/pdf'){
+                $file = fopen($_FILES['file']['tmp_name'],'r');
+
+                //file
+                $blobData = fread($file,  $_FILES['file']['size']);
+
+                //person who uploaded the file
+                $name = $_POST['name'];
+
+                //branch for which the file has been uploaded.
+                $branch = $_POST['branch'];
+
+                //semester for which the file has been uploaded.
+                $semester = (int) $_POST['semester'];
+
+                //title include either question paper or notes
+                $title = $_POST['title'];
+
+                //small description related to the file telling which subject and exam it is related to.
+                $description=$_POST['description'];
+
+                //storing this data into the database.
+                $this->connection = $this->db->getConnection();
+                $statement = $this->connection->prepare("insert into files (title,branch,semester,description,name,content) values(?,?,?,?,?,?)");
+                $statement->bind_param("ssisss", $title, $branch, $semester, $description, $name, $blobData);
+                $statement->execute();
+                $result = $statement->affected_rows;
+                if($result>0){
+                    http_response_code(200);
+                    // header("content-type:application/pdf");
+                    echo "file saved into the database successfully";
+                    exit;
+                }
+                http_response_code(500);
+                echo "file not saved into the database";
+                exit;
+            }
+            else{
+                http_response_code(400);
+                echo $_FILES['file']['type'];
+                exit;
+            }
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
+
 }
 ?>
