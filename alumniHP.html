@@ -11,6 +11,7 @@
     <!--Stylesheet-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="alumniHP.css">
     <!--font-icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -83,6 +84,17 @@
          </div>
          <script type="module" src="quesAns.js" type="text/javascript" charset="utf-8"></script>
 
+           
+        <!-- post question -->
+        
+        <div class="askQues">
+            <form action="http://localhost:8000/" method="post" id="qNa">
+             <input type="text" name="question"  placeholder="Type your question here">
+             <input type="text" name="questittle"  placeholder="Question title">
+             <textarea name="description" id="description" cols="30" rows="5" placeholder="Give a short description of your question..."></textarea>
+             <input type="submit" name="submit" value="Post Question" class="form-btn">
+            </form>
+        </div>
 
         <!-- Footer -->
 
@@ -130,7 +142,6 @@
             })
             
         </script>
-
 </body>
 
 </html>
