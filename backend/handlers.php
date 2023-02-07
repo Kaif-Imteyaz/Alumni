@@ -7,6 +7,7 @@ class handler{
     private $db;
     private $helper;
     private $connection;
+
     function __construct(){
         $this->db = new Database();
         $this->helper = new Helper();
@@ -293,7 +294,7 @@ class handler{
             }
             else{
                 http_response_code(400);
-                echo $_FILES['file']['type'];
+                echo "only pdf files are!:)";
                 exit;
             }
         }
@@ -304,5 +305,81 @@ class handler{
         }
     }
 
+    //getFile handler
+    //user will send the id and only that specific file will be fetched and sent.
+    function getFile(){
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $url = $_SERVER['REQUEST_URI'];
+            $url = parse_url($url);
+            $query = $url['query'];
+            parse_str($query, $query);
+
+
+            $sql = "select content from files where id=(?)";
+            $this->connection = $this->db->getConnection();
+            $statement = $this->connection->prepare($sql);
+            $statement->bind_param("s", $query['id']);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            $statement->close();
+            $this->connection->close();
+            if($result->num_rows<1){
+                http_response_code(404);
+                echo "no file found";
+                exit;
+            }
+            http_response_code(200);
+            header("content-type:application/pdf");
+            echo $result->fetch_array();
+            exit;
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
+
+    //get all files details except the file content
+    function getAllFiles(){
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $url = $_SERVER['REQUEST_URI'];
+            $url = parse_url($url);
+            $query = $url['query'];
+            parse_str($query, $query);
+            $branch = $query['branch'];
+            $semester = $query['semester'];
+            $title = $query['title'];
+
+            $sql = "select id,name,branch,semester,title from files where branch=(?) and semester=(?) and title=(?)";
+            $this->connection = $this->db->getConnection();
+            $statement = $this->connection->prepare($sql);
+            $statement->bind_param("sss",$branch,$semester,$title);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            if($result->num_rows<1){
+                http_response_code(404);
+                echo "no file found";
+                exit;
+            }
+            
+            $arr=array();
+            http_response_code(200);
+            header("content-type:application/json");
+
+            while($row=$result->fetch_assoc()){
+                array_push($arr, $row);
+            }
+            echo json_encode($arr);
+            exit;
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
 }
 ?>

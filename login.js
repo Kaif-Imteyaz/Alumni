@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.setItem("token",token);
         }
 
-       
 
         function formResponseHandler(formId,requestPayload,responsePayload){
             if(formId=='register'){

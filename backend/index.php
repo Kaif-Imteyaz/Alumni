@@ -22,7 +22,7 @@
     $handler=new handler();
 
     //acceptable routes in our system
-    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload");
+    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles");
  
     //extracting the url from the request
     $url = $_SERVER["REQUEST_URI"];
@@ -52,6 +52,16 @@
     else if($url==$routes["fileUpload"]){
         $handler->fileUpload();
     }
+
+    //retreive a specific file
+    else if($url==$routes['getFile']){
+        $handler->getFile();
+    }
+
+    else if($url==$routes['getAllFiles']){
+        $handler->getAllFiles();
+    }
+
     else{
         $handler->exceptionalPath();
     }
