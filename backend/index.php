@@ -22,7 +22,7 @@
     $handler=new handler();
 
     //acceptable routes in our system
-    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles");
+    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles","verifyToken"=>"/verifyToken");
  
     //extracting the url from the request
     $url = $_SERVER["REQUEST_URI"];
@@ -56,6 +56,12 @@
     //retreive a specific file
     else if($url==$routes['getFile']){
         $handler->getFile();
+    }
+
+
+    //token verification
+    else if($url==$routes['verifyToken']){
+        $handler->verifyToken();
     }
 
     else if($url==$routes['getAllFiles']){

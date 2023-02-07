@@ -158,13 +158,13 @@ class handler{
             //get the query part of the parsedurl and parse it again to get the associative array with all key-value pairs.
             parse_str($parsedurl['query'], $param);
 
-            if($param['id']){
-                //delete all the tokens related to the user 
+            if(isset($param['token'])){
+                //delete all the token from the database
                 try {
                     $this->connection = $this->db->getConnection();
-                    $sql = "DELETE from token where id=?";
+                    $sql = "DELETE from token where token=?";
                     $statement = $this->connection->prepare($sql);
-                    $statement->bind_param("s", $param["id"]);
+                    $statement->bind_param("s", $param["token"]);
 
                     $statement->execute();
                     $result=$statement->affected_rows;
@@ -202,6 +202,62 @@ class handler{
         exit;
     }
     
+    //this handler is for verifying the token received from the client by matching it with the database.
+    function verifyToken(){
+        try{
+            $data = json_decode(file_get_contents("php://input"));
+            if(!isset($data->token)){
+                http_response_code(403);
+                echo "you are not authorized";
+                exit;
+            }
+
+            //check if the token is available on the database.
+            $this->connection = $this->db->getConnection();
+            $sql = "select * from token where token=?";
+            $statement = $this->connection->prepare($sql);
+            $statement->bind_param("s", $data->token);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            $statement->close();
+            
+
+            //if the number of rows fetched is 0 than forbid the user
+            if($result->num_rows<1){
+                http_response_code(403);
+                echo "invalid token";
+                exit;
+            }
+
+            //finding if the user with the userId is available on our database[user to which the token belonged]
+            $sql = "select* from student where id=?";
+            $statement = $this->connection->prepare($sql);
+            $statement->bind_param("s", $result->fetch_assoc()['id']);
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            $statement->close();
+            $this->connection->close();
+
+            if($result->num_rows<1){
+                http_response_code(403);
+                echo "invalid token";
+                exit;
+            }
+            http_response_code(200);
+            header("content-type:application/json");
+            echo json_encode($result->fetch_assoc());
+            exit;
+        }
+        catch(Exception $e){
+            http_response_code(500);
+            print_r($e);
+            exit;
+        }
+    }
+
     public function storeUserData($data){
         //db is an object of class Database. Database class has a getConnection function which returns connection object.
         try {
@@ -250,6 +306,8 @@ class handler{
     //file upload handler
     function fileUpload(){
         if($_SERVER["REQUEST_METHOD"]=="POST"){
+            // print_r($_POST);
+            // exit;
             if(!isset($_FILES['file']) && !isset($_POST['branch']) && !isset($_POST['semester']) && !isset($_POST['title']) && !isset($_POST['name']) && !isset($_POST['description'])){
                 http_response_code(400);
                 echo "Missing required filed";
@@ -331,7 +389,7 @@ class handler{
             }
             http_response_code(200);
             header("content-type:application/pdf");
-            echo $result->fetch_array();
+            print_r($result->fetch_assoc()['content']);
             exit;
         }
         else{
