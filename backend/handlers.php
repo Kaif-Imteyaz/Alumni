@@ -231,7 +231,7 @@ class handler{
             }
 
             //finding if the user with the userId is available on our database[user to which the token belonged]
-            $sql = "select* from student where id=?";
+            $sql = "select id,name,email,yearofjoining from student where id=?";
             $statement = $this->connection->prepare($sql);
             $statement->bind_param("s", $result->fetch_assoc()['id']);
             $statement->execute();

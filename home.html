@@ -30,7 +30,39 @@
 
 </head>
 
-<script src="home.js"></script>
+<script>
+    //for securing this page from authorized access
+    window.addEventListener('load',()=>{
+        try{
+            const session=JSON.parse(localStorage.getItem(("token")));
+            console.log(session);
+            fetch("http://localhost:8000/verifyToken",{
+                method:"POST",
+                body:JSON.stringify(session),
+            }).then((response)=>{
+                if(response.status!=200 && response.status!=201){
+                    localStorage.setItem("token",JSON.stringify(''));
+                    window.location.href="http://127.0.0.1:5500/login.html";
+                }
+                else{
+                    return response.json();
+                }
+            })
+            .then((data)=>{
+                loadPage(data);
+            })
+            .catch((e)=>{
+                window.location.href="http://127.0.0.1:5500/login.html";
+            })
+        }
+        catch(e){
+            console.log(e);
+            localStorage.setItem("token",JSON.stringify(''));
+            window.location.href="http://127.0.0.1:5500/login.html";
+        }
+    })
+</script>
+
 
 <body>
 
@@ -64,11 +96,9 @@
 
         <section class="profile">
             <div class="prof_text">
-                <h2>Hello, <br> User Name</h2>
-                <p>Tanta petere igitur, ne sineres memini <br> fieri etiam aliquam inclinationem ad 
-                    <br> consequendum minima.
-                    Instead, <br>
-                    oportet omnino quieti de rebus</p>
+                <h2>Hello, <span id="userName"></span></h2>
+                <p id="userId"></p>
+                <p id="userEmail"></p>
             </div>
             <div class="prof_pic">
                <img src="profile_pic.jpg" alt="" width="150">
@@ -78,22 +108,24 @@
         <!-- course section  -->
        <div class="course">
        </div >
+
        <!-- ask Question  -->
-            <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
             <div class="form-popup formd " id="myForm">
                 <form action="/action_page.php" class="qaform">
                     <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
-               <input type="text" placeholder="Your Question" required >
-               <br>
-               <textarea placeholder="Question Description" name="" id="qds" cols="30" rows="5"></textarea>
-               <button class="qsubmit ">Submit</button>
-            </form>
-        </div>
-        <!-- Q&A Section  -->
-         <div class="container">
+                    <input type="text" placeholder="Your Question" required >
+                    <br>
+                    <textarea placeholder="Question Description" name="" id="qds" cols="30" rows="5"></textarea>
+                    <button class="qsubmit ">Submit</button>
+                </form>
+            </div>      
+        <!-- files section Section  -->
+         <div class="container" id="files_container">
 
          </div>
-         <script type="module" src="quesAns.js" type="text/javascript" charset="utf-8"></script>
+
+         <!-- <script type="module" src="quesAns.js" type="text/javascript" charset="utf-8"></script> -->
 
 
         <!-- Footer -->
@@ -110,11 +142,8 @@
                 <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
-       
-        <script >
-            
-        </script>
-
 </body>
+
+<script src="home.js"></script>
 
 </html>
