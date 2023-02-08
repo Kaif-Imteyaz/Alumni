@@ -1,4 +1,17 @@
 
+function loadPdfContainer(url,filesContainer){
+    let newDiv=document.createElement('div');
+    newDiv.style="position:absolute;top:0;left:0;width:100%;height:100%";
+    filesContainer.append(newDiv);
+
+    let newIframe=document.createElement('iframe');
+    newIframe.src=url;
+    newIframe.style="width:100%;heigth:100%";
+    newDiv.append(newIframe);
+}
+
+
+
 function loadPage(data){
     const logoutBtn=document.querySelector('#logout-btn');
     const userNameTag=document.querySelector("#userName");
@@ -12,21 +25,51 @@ function loadPage(data){
 
     let branch="computerEngineering";
     let semester="8";
-    let fileType="QuestionPaper";
+    let fileType="QuestionPpaer";
+
+    filesContainer.style="height:300px;overflow:scroll;position:relative";
 
     
-
-
     //load all the files from the database---> demo purposes
     fetch(`http://localhost:8000/getAllFiles?branch=${branch}&semester=${semester}&title=${fileType}`)
     .then((response)=>{
         if(response.status!=200 && response.status!=201){
-            filesContainer.textContent="OOPS! NO Files FOUND!"
+            filesContainer.textContent="OOPS! NO Files FOUND!";
+            
         }
-        return response.json();
+        else{
+            return response.json();
+        }
     })
     .then((data)=>{
-        console.log(data);
+        data.forEach(file=>{
+            let newDiv=document.createElement('div');
+            newDiv.style="background-color:gray;width:200px;"
+            for(key in file){
+                let p=document.createElement('p');
+                p.textContent=key+" = "+file[key];
+                newDiv.append(p);
+            }
+            newDiv.addEventListener('click',(e)=>{
+                fetch(`http://localhost:8000/getFile?id=${file['id']}`,)
+                .then((response)=>{
+                        if(response.status!=200 && response.status!=201){
+                            console.log('something went wrong');
+                        }
+                        else{
+                            return response.blob();
+                        }
+                })
+                .then((data)=>{
+                    let url=URL.createObjectURL(data);
+                    loadPdfContainer(url,filesContainer);   
+                })
+                .catch((e)=>{
+                    console.log(e);
+                })
+            })
+            filesContainer.append(newDiv);
+        })
     })
     .catch((e)=>{
         console.log(e);
