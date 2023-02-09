@@ -410,7 +410,7 @@ class handler{
             $semester = $query['semester'];
             $title = $query['title'];
 
-            $sql = "select id,name,branch,semester,title from files where branch=(?) and semester=(?) and title=(?)";
+            $sql = "select id,name,branch,semester,title,description from files where branch=(?) and semester=(?) and title=(?)";
             $this->connection = $this->db->getConnection();
             $statement = $this->connection->prepare($sql);
             $statement->bind_param("sss",$branch,$semester,$title);

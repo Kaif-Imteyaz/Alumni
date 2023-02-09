@@ -42,13 +42,11 @@ function loadPage(data){
     .then((data)=>{
         data.forEach(file=>{
             let newDiv=document.createElement('div');
-            // newDiv.style="background-color:gray;width:200px;"
             newDiv.classList.add('file_box');
-            for(key in file){
-                let p=document.createElement('p');
-                p.textContent=key+" = "+file[key];
-                newDiv.append(p);
-            }
+            newDiv.style="fontp"
+            newDiv.textContent=file['title']+" for semester "+file['semester'];
+            
+
             newDiv.addEventListener('click',(e)=>{
                 fetch(`http://localhost:8000/getFile?id=${file['id']}`,)
                 .then((response)=>{
