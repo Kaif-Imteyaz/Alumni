@@ -24,10 +24,9 @@ function loadPage(data){
     userEmailTag.textContent=data.email;
 
     let branch="computerEngineering";
-    let semester="8";
-    let fileType="QuestionPpaer";
+    let semester="6";
+    let fileType="QuestionPaper";
 
-    filesContainer.style="height:300px;overflow:scroll;position:relative";
 
     
     //load all the files from the database---> demo purposes
@@ -35,7 +34,6 @@ function loadPage(data){
     .then((response)=>{
         if(response.status!=200 && response.status!=201){
             filesContainer.textContent="OOPS! NO Files FOUND!";
-            
         }
         else{
             return response.json();
@@ -44,7 +42,8 @@ function loadPage(data){
     .then((data)=>{
         data.forEach(file=>{
             let newDiv=document.createElement('div');
-            newDiv.style="background-color:gray;width:200px;"
+            // newDiv.style="background-color:gray;width:200px;"
+            newDiv.classList.add('file_box');
             for(key in file){
                 let p=document.createElement('p');
                 p.textContent=key+" = "+file[key];
