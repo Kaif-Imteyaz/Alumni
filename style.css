@@ -1,27 +1,42 @@
 *{
   font-family: 'Poppins';
 }
+
 body{
     background-color:#ffffff;
 }
+
+
+
 html {
     box-sizing: border-box;
   }
+
+
+  /* navbar */
+
+  .navbar {
+    background-color: #047a3b; 
+    opacity: 1; /* set the opacity to 1 to remove transparency */
+  }
   
-.pageName{
-    margin-left: 2%;
+.navbar-brand{
+  margin-left: 4%;
 }
-.navbar{
-    background-color:#047a3bed;
-}
+
 .nav-link{
   color: #ffffff;
 }
+
 .collapse{
     margin-right: 2%;
 }
+
+
+
+/* headings from top-section */
 h1{
-    color: #222222;
+  color: #222222;
     text-align: center;
 
 }
@@ -29,9 +44,10 @@ h2{
     text-align: center;
     /* padding: 3% 15%; */
     color: #222222;
-    size: 100%;
+    size: 80%;
 }
 
+/* Top-section */
 #Top{
     text-align: center;
 }
@@ -48,19 +64,37 @@ h2{
     background-size: 100% 100%;
     background-blend-mode: normal;
 }
-.map_section h2, p {
-  text-align: left;
-  padding-left: 2%;
-  margin-left: 1%;
-}
-.map-text{
-  padding: 3% 5%;
-}
+
+/* map */
+
 .maps{
   padding: 2%;
 }
 
+.map-section{
+  padding: 8%;
+}
+
+.map-img{
+  margin-left: 20%;
+}
+
+.map-text{
+  padding: 2%;
+}
+
+
+
 /* explore */
+.college{
+  margin-left: 8%;
+  /* size: 100%; */
+}
+.jmi-pic{
+  margin-left: 12%;  
+ }
+
+
 #explore{
   padding: 2%;
   text-align: left;
@@ -74,20 +108,27 @@ h2{
   margin: 0;
 }
 
-#footer{
-    background-color: #047a3bed;
-    text-align: center;
-    padding: 2% 2%;
-}
-.social-icon{
-    margin-top: 5%;
-    margin-left: 2%;
-}
-.copyright{
-    padding: 3%;
+
+/* about alumni and team */
+.alumni-abt-blank{
+   padding: 3%;
+  margin: 4% 4% 0 4%;
 }
 
-/* About CSS */
+.alumni-abt{
+  border-radius: 30px;
+  border: #000 1px solid;
+  text-align: justify;
+  padding: 3%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  
+}
+
+
+
+
+/* About us card  CSS */
     
     
     *, *:before, *:after {
@@ -106,20 +147,8 @@ h2{
       margin: 8px;
     }
     
-    .about-section {
-      padding: 50px;
-      text-align: center;
-      background-color: rgb(77, 80, 76);
-      color: white;
-    }
 
-    .aboutHead{
-        color: #f3efe0;
-    }
-
-    .abh{
-        color: #f3efe0;
-    }
+    /* our team */
     
     .container {
       padding: 0 16px;
@@ -157,3 +186,35 @@ h2{
         display: block;
       }
     }
+
+
+    /* footer */
+
+#footer{
+    background-color: #047a3bed;
+    text-align: center;
+    padding: 2% 2%;
+}
+.social-icon{
+    margin-top: 5%;
+    margin-left: 2%;
+}
+.copyright{
+    padding: 3%;
+}
+
+
+
+    /* for explore */ /* alumni-abt */
+
+    
+@media screen and (max-width: 650px) {
+  .college , .jmi-pic, .map-img, .alumni-abt{
+    text-align: center;
+    text-justify: auto;
+    margin: 0;
+    width: 100%;
+    display: block;
+  }
+}
+
