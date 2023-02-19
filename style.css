@@ -3,7 +3,8 @@
 }
 
 body{
-    background-color:#ffffff;
+  font-family: 'Just Another Hand', cursive;
+  background: #f3f3f3;
 }
 
 
@@ -72,11 +73,12 @@ h2{
 }
 
 .map-section{
-  padding: 8%;
+  margin-left: 2%;
+  margin-top: 3%;
 }
 
 .map-img{
-  margin-left: 20%;
+  margin-left: 10%;
 }
 
 .map-text{
@@ -87,11 +89,13 @@ h2{
 
 /* explore */
 .college{
-  margin-left: 8%;
-  /* size: 100%; */
+  margin-left: 2%;
+  size: 100%;
+  width: 500px;
+  padding: 2%;
 }
 .jmi-pic{
-  margin-left: 12%;  
+  margin-left: 8%;  
  }
 
 
@@ -104,12 +108,16 @@ h2{
 }
 .abt-jmi{
   text-align: justify;
-  padding: 0;
-  margin: 0;
+  padding: 6px;
+  margin: 6px;
 }
 
 
 /* about alumni and team */
+.abt-page{
+  padding-top: 5% ;
+}
+
 .alumni-abt-blank{
    padding: 3%;
   margin: 4% 4% 0 4%;
@@ -119,12 +127,74 @@ h2{
   border-radius: 30px;
   border: #000 1px solid;
   text-align: justify;
-  padding: 3%;
-  margin-left: 10%;
+  padding: 2%;
+  margin-left: 5%;
   margin-bottom: 5%;
-  
 }
 
+
+.alumni-abt-right{
+  border-radius: 30px;
+  border: #000 1px solid;
+  text-align: justify;
+  padding: 2%;
+  margin-left: 13%;
+  margin-bottom: 5%;
+}
+
+
+/* Box transition and shadow */
+.alumni-abt, .alumni-abt-right{
+  position: relative;
+  width: 40%;
+  height: 50%;
+  background: white;
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  /* color: white; */
+  box-shadow: 20px 20px rgba(0,0,0,.15);
+  transition: all .4s ease;
+}
+
+.college, .map-text{
+position: relative;
+width: 55%;
+background: white;
+border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+/* color: white; */
+box-shadow: 20px 20px rgba(0,0,0,.15);
+transition: all .4s ease;
+}
+
+
+.jmi{
+  position: relative;
+  width: 96%;
+  height: 100%;
+  margin-left: 2%;
+  background: white;
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  /* color: white; */
+  box-shadow: 5px 10px rgba(0,0,0,.15);
+  transition: all .4s ease;
+  margin-bottom: 30px;
+}
+
+.college:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
+.map-text:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
+.alumni-abt:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
+.alumni-abt-right:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
 
 
 
@@ -137,7 +207,7 @@ h2{
     
     .column {
       float: left;
-      width: 25%;
+      width: 35%;
       margin-bottom: 16px;
       padding: 0 8px;
     }
@@ -179,6 +249,13 @@ h2{
     .button:hover {
       background-color: #555;
     }
+
+
+    .abt-team{
+      margin-left: 10%;
+    }
+
+
     
     @media screen and (max-width: 650px) {
       .column {
@@ -186,6 +263,9 @@ h2{
         display: block;
       }
     }
+
+
+
 
 
     /* footer */
@@ -209,11 +289,27 @@ h2{
 
     
 @media screen and (max-width: 650px) {
-  .college , .jmi-pic, .map-img, .alumni-abt{
+  .college , .jmi-pic, .alumni-abt, .abt-team, .map-text, .alumni-abt-right{
     text-align: center;
     text-justify: auto;
-    margin: 0;
-    width: 100%;
+    
+    pointer-events: none;
+
+    margin: 5px;
+    margin-left: 23px;
+    width: 92%;
+    display: block;
+
+  }
+}
+
+    
+@media screen and (max-width: 650px) {
+   .map-img{
+    text-align: center;
+    text-justify: auto;
+    margin: 3px;
+    width: 92%;
     display: block;
   }
 }
