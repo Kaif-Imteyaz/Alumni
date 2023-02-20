@@ -1,15 +1,52 @@
 
 function loadPdfContainer(url,filesContainer){
-    let newDiv=document.createElement('div');
-    newDiv.style="position:absolute;top:0;left:0;width:100%;height:100%";
-    filesContainer.append(newDiv);
-
+   
     let newIframe=document.createElement('iframe');
     newIframe.src=url;
-    newIframe.style="width:100%;heigth:100%";
-    newDiv.append(newIframe);
-}
+    newIframe.height=400;
+    newIframe.style="position:absolute;top:0;left:0;"
+    filesContainer.append(newIframe);
+    let div=document.createElement('div');
+    div.style="poistion:absolute;top:0;right:0;z-index:5;";
+    div.textContent="ehrewbriwqehr p";
+    newIframe.append(div);
 
+    // let pageNum=1;
+    // let pageIsRendering=false;
+    // let pageIsPending=null;
+
+    // let canvas=document.createElement('canvas');
+    // canvas.style="position:absolute;top:0;left:0;"
+    // let ctx=canvas.getContext('2d');
+
+   
+    // const renderPage=(pdf)=>{
+    //     // for(let i=1;i<=pdf.numPages;i++){
+    //         pdf.getPage(1).then(page=>{
+    //             pageIsRendering=true;
+    //             let viewport=page.getViewport({scale:1});
+    //             canvas.width=viewport.width;
+    //             canvas.heigth=viewport.height;
+    
+    //             page.render({
+    //                 canvasContext:ctx,
+    //                 viewport:viewport, 
+    //             }).promise.then(()=>{
+    //                 pageIsRendering=true;
+    //                 if(pageIsPending!=null){
+    //                     renderPage(pageIsPending);
+    //                     pageIsPending=null;
+    //                 }
+    //             })
+    //         })
+    //     // }
+    //}
+
+    // pdfjsLib.getDocument(url).promise.then((pdf)=>{
+    //     renderPage(pdf);
+    // })
+
+}
 
 
 function loadPage(data){
@@ -43,9 +80,8 @@ function loadPage(data){
         data.forEach(file=>{
             let newDiv=document.createElement('div');
             newDiv.classList.add('file_box');
-            newDiv.style="fontp"
-            newDiv.textContent=file['title']+" for semester "+file['semester'];
-            
+            newDiv.innerHTML=`<div><h5>${file['title']}</h5></div><div><p id="pHover" style="font-weight:bolder;font-size:1em;color:#158247;text-align:center;display:none">${file['description']}</p></div><div><p>branch: ${file['branch']}</p><p> semester: ${file['semester']}</p><p>contributed by:<b>${file['name']}</b></p></div> `;
+            filesContainer.append(newDiv);
 
             newDiv.addEventListener('click',(e)=>{
                 fetch(`http://localhost:8000/getFile?id=${file['id']}`,)
@@ -65,7 +101,6 @@ function loadPage(data){
                     console.log(e);
                 })
             })
-            filesContainer.append(newDiv);
         })
     })
     .catch((e)=>{
