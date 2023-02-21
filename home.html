@@ -86,7 +86,7 @@
                     </li>
                     <!-- about button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="aboutUs.html">About</a>
+                        <a class="nav-link" href="#about-us">About</a>
                     </li>
                     <!-- login button -->
                     <li class="nav-item">
@@ -112,8 +112,7 @@
        </div >
 
        <!-- ask Question  -->
-      
-        <button class="qbutton fa fa-plus" onclick="openForm()" ></button>
+        <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
             <div class="form-popup formd " id="myForm">
                 <form action="/action_page.php" class="qaform">
                     <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
@@ -145,6 +144,7 @@
                 <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
+</body>
 
 <script>
     function openForm() {
@@ -155,7 +155,6 @@
       document.getElementById("myForm").style.display = "none";
     }
 </script>
-</body>
 <script src="home.js"></script>
 
 </html>
