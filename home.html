@@ -112,7 +112,8 @@
        </div >
 
        <!-- ask Question  -->
-        <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      
+        <button class="qbutton fa fa-plus" onclick="openForm()" ></button>
             <div class="form-popup formd " id="myForm">
                 <form action="/action_page.php" class="qaform">
                     <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
@@ -144,7 +145,6 @@
                 <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
-</body>
 
 <script>
     function openForm() {
@@ -155,6 +155,7 @@
       document.getElementById("myForm").style.display = "none";
     }
 </script>
+</body>
 <script src="home.js"></script>
 
 </html>

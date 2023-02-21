@@ -35,20 +35,17 @@ body{
 }
 
 /* course section  */
-.open-button {
+.qbutton {
     background-color: #158247;
     color: white;
     padding: 16px 20px;
-    position: fixed;
+    position: relative;
     top: 85%;
-    left: 93%;
-    border: none;
-    cursor: pointer;
+    left: 43%;
+    border: none;  
     border-radius: 100%;
-    /* opacity: 0.8; */
-    /* width: 180px; */
   }
-
+  
   .cancel{
      background-color: transparent;
      border: none;
