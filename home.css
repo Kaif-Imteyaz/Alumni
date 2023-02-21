@@ -150,6 +150,28 @@ body{
     margin:0;
 }
 
+/* table  */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    margin: 0 auto 0 auto;
+  }
+  th{
+    background-color: #222222;
+    color: #fff;
+  }
+  
+  td, th {
+    border: 1px solid #8f7a7a;
+    padding: 8px;
+    text-align: center;
+
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
 @media screen and (max-width:1200px){
     .file_box{
         width:40%;
