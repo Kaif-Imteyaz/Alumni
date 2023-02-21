@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   else{
                     //store the session in the localStorage;
                     setToken(response);
-                    window.location.href="http://127.0.0.1:5500/home.html"
+                    window.location.href="http://127.0.0.1:5501/home.html"
                   }
               })
             }
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 //redirect user
-                window.location.href="http://127.0.0.1:5500/home.html";  
+                window.location.href="http://127.0.0.1:5501/home.html";  
             } 
         }
         

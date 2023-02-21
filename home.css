@@ -35,20 +35,17 @@ body{
 }
 
 /* course section  */
-.open-button {
+.qbutton {
     background-color: #158247;
     color: white;
     padding: 16px 20px;
-    position: fixed;
+    position: relative;
     top: 85%;
-    left: 93%;
-    border: none;
-    cursor: pointer;
+    left: 43%;
+    border: none;  
     border-radius: 100%;
-    /* opacity: 0.8; */
-    /* width: 180px; */
   }
-
+  
   .cancel{
      background-color: transparent;
      border: none;
@@ -153,6 +150,45 @@ body{
     margin:0;
 }
 
+/* table  */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 65%;
+    margin: 20px auto 40px auto;
+  }
+  th{
+    background-color: #222222;
+    color: #fff;
+  }
+  
+  td, th {
+    border: 1px solid #8f7a7a;
+    padding: 8px;
+    text-align: center;
+
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+#dropdown select{
+    width: 220px;
+    height: 35px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    /* border: none; */
+    background-color: #158247;
+    color: #fff;
+}
+.ssubmit{
+    background-color: black;
+    color: #fff;
+    border: none;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    
+}
 @media screen and (max-width:1200px){
     .file_box{
         width:40%;

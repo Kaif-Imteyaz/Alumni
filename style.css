@@ -7,6 +7,23 @@ body{
   background: #f3f3f3;
 }
 
+/* join and explore */
+#join, #Explore{
+  text-decoration: none;
+  color: white;
+}
+
+#join:hover{
+  color: #047a3b;
+}
+
+#Explore:hover{
+  color: white;
+}
+
+
+/* join and explore end*/
+
 
 
 html {
@@ -57,8 +74,9 @@ h2{
     margin: 3%;
 }
 
+/* background image */
 .Top-head{
-  background-image: linear-gradient(to bottom, #e2f6ebed, rgba(198, 222, 241, 0.5)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
+  background-image: linear-gradient(to bottom, #84a391, rgba(28, 29, 27, 0.007)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
   padding: 15% 15%;
     background-repeat: no-repeat;
     background-attachment: fixed;  
@@ -78,7 +96,7 @@ h2{
 }
 
 .map-img{
-  margin-left: 10%;
+  margin-left: 2%;
 }
 
 .map-text{
@@ -95,8 +113,17 @@ h2{
   padding: 2%;
 }
 .jmi-pic{
-  margin-left: 8%;  
+  margin-left: 5%;  
+
  }
+
+#read-more{
+color: #047a3b;
+}
+#read-more::after
+{
+  color: #047a3b;
+  }
 
 
 #explore{
@@ -165,6 +192,16 @@ box-shadow: 20px 20px rgba(0,0,0,.15);
 transition: all .4s ease;
 }
 
+.map-img, .jmi-pic{
+  position: relative;
+  width: 35%;
+  padding: 1%;
+  background: white;
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  /* color: white; */
+  box-shadow: 20px 20px rgba(0,0,0,.15);
+  transition: all .4s ease;
+  }
 
 .jmi{
   position: relative;
@@ -200,14 +237,25 @@ transition: all .4s ease;
 
 /* About us card  CSS */
     
-    
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.sir{
+   padding-left: 36%;
+
+  }
+  .column-sir {
+    float: left;
+    width: 45%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
     
     .column {
       float: left;
-      width: 35%;
+      width: 25%;
       margin-bottom: 16px;
       padding: 0 8px;
     }
@@ -216,7 +264,7 @@ transition: all .4s ease;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       margin: 8px;
     }
-    
+
 
     /* our team */
     
@@ -240,19 +288,20 @@ transition: all .4s ease;
       display: inline-block;
       padding: 8px;
       color: white;
-      background-color: #000;
+      background-color: #047a3b;
       text-align: center;
       cursor: pointer;
       width: 100%;
     }
     
     .button:hover {
-      background-color: #555;
+      background-color: #0a3c05e4;
     }
 
 
+
     .abt-team{
-      margin-left: 10%;
+      /* margin-left: 10%; */
     }
 
 
@@ -278,6 +327,7 @@ transition: all .4s ease;
 .social-icon{
     margin-top: 5%;
     margin-left: 2%;
+    margin-bottom: 5%;
 }
 .copyright{
     padding: 3%;
@@ -296,6 +346,7 @@ transition: all .4s ease;
     pointer-events: none;
 
     margin: 5px;
+    margin-top: 5%;
     margin-left: 23px;
     width: 92%;
     display: block;
