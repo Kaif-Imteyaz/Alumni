@@ -42,7 +42,7 @@
             }).then((response)=>{
                 if(response.status!=200 && response.status!=201){
                     localStorage.setItem("token",JSON.stringify(''));
-                    window.location.href="http://127.0.0.1:5500/login.html";
+                    window.location.href="http://127.0.0.1:5501/login.html";
                 }
                 else{
                     return response.json();
@@ -52,13 +52,13 @@
                 loadPage(data);
             })
             .catch((e)=>{
-                window.location.href="http://127.0.0.1:5500/login.html";
+                window.location.href="http://127.0.0.1:5501/login.html";
             })
         }
         catch(e){
             console.log(e);
             localStorage.setItem("token",JSON.stringify(''));
-            window.location.href="http://127.0.0.1:5500/login.html";
+            window.location.href="http://127.0.0.1:5501/login.html";
         }
     })
 </script>
@@ -124,7 +124,7 @@
                 </form>
             </div>      
         <!-- files section Section  -->
-        <form action="#">
+        <form action="#" id="dropdown">
             <select name="title" id="">
                 <option value="">Title</option>
                 <option value="qpaper">Question Paper</option>
@@ -132,6 +132,7 @@
                 <option value="book">Book</option>
 
             </select>
+            <!-- <br> -->
             <select name="Branch" id="">
                 <option value="">Branch</option>
                 <option value="mechanical">Mechanical</option>
@@ -140,6 +141,7 @@
                 <option value="electrical">Electrical</option>
                 <option value="computer">Computer</option>
             </select>
+            <!-- <br> -->
             <select name="Semester" id="" >
                 <option value="">Semester</option>
                 <option value="1">1</option>
@@ -148,8 +150,8 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
-
             </select>
+            <button type="submit" class="ssubmit">Submit</button>
         </form>
         <table>
             <tr>
@@ -161,9 +163,22 @@
             </tr>
             <tr>
                 <td>Question Paper</td>
-                <td>Computer Engineering</td>
+                <td>Mechanical Engineering</td>
                 <td>6</td>
-                <td>Sameer</td>
+                <td>Kaif Imteyaz</td>
+                <td>www.gdrive.com</td>
+            </tr>
+            <tr>
+                <td>Question Paper</td>
+                <td>Electrical Engineering</td>
+                <td>4</td>
+                <td>Yusuf Azam</td>
+                <td>www.gdrive.com</td>
+            </tr><tr>
+                <td>Question Paper</td>
+                <td>Civil Engineering</td>
+                <td>6</td>
+                <td>Faisal</td>
                 <td>www.gdrive.com</td>
             </tr>
             <tr>
@@ -174,9 +189,9 @@
                 <td>www.gdrive.com</td>
             </tr><tr>
                 <td>Question Paper</td>
-                <td>Computer Engineering</td>
+                <td>Electronics Engineering</td>
                 <td>6</td>
-                <td>Sameer</td>
+                <td>Hanzala Tafzeel
                 <td>www.gdrive.com</td>
             </tr>
         </table>

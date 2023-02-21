@@ -154,8 +154,8 @@ body{
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 60%;
-    margin: 0 auto 0 auto;
+    width: 65%;
+    margin: 20px auto 40px auto;
   }
   th{
     background-color: #222222;
@@ -171,7 +171,24 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
-
+#dropdown select{
+    width: 220px;
+    height: 35px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    /* border: none; */
+    background-color: #158247;
+    color: #fff;
+}
+.ssubmit{
+    background-color: black;
+    color: #fff;
+    border: none;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    
+}
 @media screen and (max-width:1200px){
     .file_box{
         width:40%;
