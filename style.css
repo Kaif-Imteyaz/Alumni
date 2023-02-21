@@ -12,15 +12,11 @@ body{
   text-decoration: none;
   color: white;
 }
-#join{
+
+#join:hover{
   color: #047a3b;
 }
-#join:hover{
-  color: white;
-}
-#join:hover{
-  color: white;
-}
+
 #Explore:hover{
   color: white;
 }
@@ -80,7 +76,7 @@ h2{
 
 /* background image */
 .Top-head{
-  background-image: linear-gradient(to bottom, #9ab3a5d2, rgba(220, 241, 198, 0.653)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
+  background-image: linear-gradient(to bottom, #84a391, rgba(28, 29, 27, 0.007)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
   padding: 15% 15%;
     background-repeat: no-repeat;
     background-attachment: fixed;  

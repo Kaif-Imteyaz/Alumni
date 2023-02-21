@@ -120,7 +120,7 @@ function loadPage(data){
             xhr.addEventListener("load",()=>{
                 if(xhr.status===200){
                     localStorage.removeItem("token");
-                    window.location="http://127.0.0.1:5500/index.html";
+                    window.location="http://127.0.0.1:5501/index.html";
                 }
                 else{
                     console.log(xhr.response);
@@ -132,7 +132,7 @@ function loadPage(data){
             xhr.send();
         }
         else{
-            window.location="http://127.0.0.1:5500/index.html";
+            window.location="http://127.0.0.1:5501/index.html";
         }
     })
 }
