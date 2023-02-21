@@ -1,6 +1,7 @@
 
 function loadPdfContainer(url,filesContainer){
    
+    
     let newIframe=document.createElement('iframe');
     newIframe.src=url;
     newIframe.height=400;
@@ -10,7 +11,9 @@ function loadPdfContainer(url,filesContainer){
     div.style="poistion:absolute;top:0;right:0;z-index:5;";
     div.textContent="ehrewbriwqehr p";
     newIframe.append(div);
+    
 
+    
     // let pageNum=1;
     // let pageIsRendering=false;
     // let pageIsPending=null;
@@ -120,7 +123,7 @@ function loadPage(data){
             xhr.addEventListener("load",()=>{
                 if(xhr.status===200){
                     localStorage.removeItem("token");
-                    window.location="http://127.0.0.1:5500/index.html";
+                    window.location="http://127.0.0.1:5501/index.html";
                 }
                 else{
                     console.log(xhr.response);
@@ -132,7 +135,7 @@ function loadPage(data){
             xhr.send();
         }
         else{
-            window.location="http://127.0.0.1:5500/index.html";
+            window.location="http://127.0.0.1:5501/index.html";
         }
     })
 }
