@@ -21,6 +21,17 @@ body{
     width: 70%;
 
 }
+/* user id name */
+#userName{
+    font-size: 4rem;
+}
+#userID{
+    float: left;
+}
+#welcomeNotes{
+    margin-left: 5%
+}
+
 .prof_pic{
     padding: 43px 0px 0 11%;
 }
@@ -29,6 +40,10 @@ body{
     padding-bottom: 0;
     text-align: left;
     
+}
+.prof_text p{
+    text-align: left;
+    margin-left: 5%;
 }
 .prof_pic img{
     border-radius: 100%;
