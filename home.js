@@ -1,115 +1,55 @@
 
-function loadPdfContainer(url,filesContainer){
-   
-    let newIframe=document.createElement('iframe');
-    newIframe.src=url;
-    newIframe.height=400;
-    newIframe.style="position:absolute;top:0;left:0;"
-    filesContainer.append(newIframe);
-    let div=document.createElement('div');
-    div.style="poistion:absolute;top:0;right:0;z-index:5;";
-    div.textContent="ehrewbriwqehr p";
-    newIframe.append(div);
 
-    // let pageNum=1;
-    // let pageIsRendering=false;
-    // let pageIsPending=null;
+//for securing this page from authorized access
+window.addEventListener('load', () => {
+    const session = JSON.parse(localStorage.getItem(("token")));
+    console.log(session);
+    fetch("http://localhost:8000/verifyToken",{
+        method:"POST",
+        body:JSON.stringify(session),
+    }).then((response)=>{
+                if (response.status != 200 && response.status != 201) {
+                    localStorage.setItem("token", JSON.stringify(''));
+                    window.location.href = "http://127.0.0.1:5501/login.html";
+                }
+                else {
+                    return response.json();
+                }
+        })
+        .then((data)=>{
+            loadPage(data);
+        })
+        .catch((e)=>{
+            window.location.href="http://127.0.0.1:5501/login.html";
+        })
+})
 
-    // let canvas=document.createElement('canvas');
-    // canvas.style="position:absolute;top:0;left:0;"
-    // let ctx=canvas.getContext('2d');
-
-   
-    // const renderPage=(pdf)=>{
-    //     // for(let i=1;i<=pdf.numPages;i++){
-    //         pdf.getPage(1).then(page=>{
-    //             pageIsRendering=true;
-    //             let viewport=page.getViewport({scale:1});
-    //             canvas.width=viewport.width;
-    //             canvas.heigth=viewport.height;
-    
-    //             page.render({
-    //                 canvasContext:ctx,
-    //                 viewport:viewport, 
-    //             }).promise.then(()=>{
-    //                 pageIsRendering=true;
-    //                 if(pageIsPending!=null){
-    //                     renderPage(pageIsPending);
-    //                     pageIsPending=null;
-    //                 }
-    //             })
-    //         })
-    //     // }
-    //}
-
-    // pdfjsLib.getDocument(url).promise.then((pdf)=>{
-    //     renderPage(pdf);
-    // })
-
-}
 
 
 function loadPage(data){
+
     const logoutBtn=document.querySelector('#logout-btn');
     const userNameTag=document.querySelector("#userName");
     const userIdTag=document.querySelector("#userId");
     const userEmailTag=document.querySelector("#userEmail");
-    const filesContainer=document.querySelector("#files_container");
+    const dropDownForm=document.querySelector('#dropdown');
+
 
     userNameTag.textContent=data.name;
     userIdTag.textContent=data.id;
     userEmailTag.textContent=data.email;
 
-    let branch="computerEngineering";
-    let semester="6";
-    let fileType="QuestionPaper";
+    fetchPdfFiles(dropDownForm);
 
-
-    
-    //load all the files from the database---> demo purposes
-    fetch(`http://localhost:8000/getAllFiles?branch=${branch}&semester=${semester}&title=${fileType}`)
-    .then((response)=>{
-        if(response.status!=200 && response.status!=201){
-            filesContainer.textContent="OOPS! NO Files FOUND!";
-        }
-        else{
-            return response.json();
-        }
-    })
-    .then((data)=>{
-        data.forEach(file=>{
-            let newDiv=document.createElement('div');
-            newDiv.classList.add('file_box');
-            newDiv.innerHTML=`<div><h5>${file['title']}</h5></div><div><p id="pHover" style="font-weight:bolder;font-size:1em;color:#158247;text-align:center;display:none">${file['description']}</p></div><div><p>branch: ${file['branch']}</p><p> semester: ${file['semester']}</p><p>contributed by:<b>${file['name']}</b></p></div> `;
-            filesContainer.append(newDiv);
-
-            newDiv.addEventListener('click',(e)=>{
-                fetch(`http://localhost:8000/getFile?id=${file['id']}`,)
-                .then((response)=>{
-                        if(response.status!=200 && response.status!=201){
-                            console.log('something went wrong');
-                        }
-                        else{
-                            return response.blob();
-                        }
-                })
-                .then((data)=>{
-                    let url=URL.createObjectURL(data);
-                    loadPdfContainer(url,filesContainer);   
-                })
-                .catch((e)=>{
-                    console.log(e);
-                })
-            })
-        })
-    })
-    .catch((e)=>{
-        console.log(e);
+    dropDownForm.addEventListener('submit',function(e){
+        e.preventDefault();
+        fetchPdfFiles(this);
     })
 
-
+   
     //event handler for logout
     logoutBtn.addEventListener('click',(e)=>{
+        console.log('clicked');
         let session=JSON.parse(localStorage.getItem("token"));
         if(typeof(session)=="object" && session && Object.keys(session).length>0){
             let xhr=new XMLHttpRequest();
@@ -135,4 +75,68 @@ function loadPage(data){
             window.location="http://127.0.0.1:5501/index.html";
         }
     })
+
+}
+
+function fetchPdfFiles(_this){
+    const branch=_this.elements['branch'].value;
+    const semester=_this.elements['semester'].value;
+    const fileType=_this.elements['filetype'].value;
+
+    fetch(`http://localhost:8000/getAllFiles?branch=${branch}&semester=${semester}&title=${fileType}`)
+    .then((response)=>{
+        if(response.status!=200 && response.status!=201){
+            modifyTable();
+        }
+        else{
+            return response.json();
+        }
+    })
+    .then((data)=>{
+        if( data!=null && typeof(data)=='object' && Object.keys(data).length>0){
+            displayFiles(data);
+        }
+    })
+    .catch((e)=>{
+        console.log(e);
+    })
+}
+
+function displayFiles(files){
+    modifyTable();
+    const table=document.querySelector('#fileContent');
+    files.forEach(file=>{
+        let tr=document.createElement('tr');
+        let td1=document.createElement('td');
+        let td2=document.createElement('td');
+        let td3=document.createElement('td');
+        let td4=document.createElement('td');
+        let td5=document.createElement('td');
+        const aTag=document.createElement('a');
+
+        td1.textContent=file['title'];
+        tr.append(td1);
+        td2.textContent=file['branch'];
+        tr.append(td2);
+        td3.textContent=file['semester'];
+        tr.append(td3);
+        td4.textContent=file['name'];
+        tr.append(td4);
+
+        aTag.href=`http://localhost:8000/getFile?id=${file['id']}`;
+        aTag.target="_blank"
+        aTag.textContent='pdf';
+        td5.append(aTag);
+        tr.append(td5);
+
+        table.append(tr);
+    })
+}
+
+function modifyTable(){
+    const table=document.querySelector('#fileContent');
+    const tr=document.querySelectorAll('#fileContent tr');
+    for(let i=1;i<tr.length;i++){
+        table.removeChild(tr[i]);
+    }
 }
