@@ -11,7 +11,7 @@
     <!--Stylesheet-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
-    
+
     <!--font-icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -24,41 +24,41 @@
     <!-- font poppins -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Montserrat:wght@100&family=Poppins:wght@300;400&family=Roboto:wght@300&display=swap');
-        </style>
-  
+    </style>
+
     <title>ALUMNI</title>
 
 </head>
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script>
     //for securing this page from authorized access
-    window.addEventListener('load',()=>{
-        try{
-            const session=JSON.parse(localStorage.getItem(("token")));
+    window.addEventListener('load', () => {
+        try {
+            const session = JSON.parse(localStorage.getItem(("token")));
             console.log(session);
-            fetch("http://localhost:8000/verifyToken",{
-                method:"POST",
-                body:JSON.stringify(session),
-            }).then((response)=>{
-                if(response.status!=200 && response.status!=201){
-                    localStorage.setItem("token",JSON.stringify(''));
-                    window.location.href="http://127.0.0.1:5501/login.html";
+            fetch("http://localhost:8000/verifyToken", {
+                method: "POST",
+                body: JSON.stringify(session),
+            }).then((response) => {
+                if (response.status != 200 && response.status != 201) {
+                    localStorage.setItem("token", JSON.stringify(''));
+                    window.location.href = "http://127.0.0.1:5501/login.html";
                 }
-                else{
+                else {
                     return response.json();
                 }
             })
-            .then((data)=>{
-                loadPage(data);
-            })
-            .catch((e)=>{
-                window.location.href="http://127.0.0.1:5501/login.html";
-            })
+                .then((data) => {
+                    loadPage(data);
+                })
+                .catch((e) => {
+                    window.location.href = "http://127.0.0.1:5501/login.html";
+                })
         }
-        catch(e){
+        catch (e) {
             console.log(e);
-            localStorage.setItem("token",JSON.stringify(''));
-            window.location.href="http://127.0.0.1:5501/login.html";
+            localStorage.setItem("token", JSON.stringify(''));
+            window.location.href = "http://127.0.0.1:5501/login.html";
         }
     })
 </script>
@@ -90,7 +90,7 @@
                     </li>
                     <!-- login button -->
                     <li class="nav-item">
-                        <a class="nav-link" id="logout-btn" >Logout</a>
+                        <a class="nav-link" id="logout-btn">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -103,25 +103,15 @@
                 <p id="userEmail"></p>
             </div>
             <div class="prof_pic">
-               <img src="profile_pic.jpg" alt="" width="150">
-               <h4>Profile</h4>
+                <img src="profile_pic.jpg" alt="" width="150">
+                <h4>Profile</h4>
             </div>
         </section>
         <!-- course section  -->
-       <div class="course">
-       </div >
+        <div class="course">
+        </div>
 
-       <!-- ask Question  -->
-        <button class="open-button" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            <div class="form-popup formd " id="myForm">
-                <form action="/action_page.php" class="qaform">
-                    <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
-                    <input type="text" placeholder="Your Question" required >
-                    <br>
-                    <textarea placeholder="Question Description" name="" id="qds" cols="30" rows="5"></textarea>
-                    <button class="qsubmit ">Submit</button>
-                </form>
-            </div>      
+
         <!-- files section Section  -->
         <form action="#" id="dropdown">
             <select name="title" id="">
@@ -141,7 +131,7 @@
                 <option value="computer">Computer</option>
             </select>
             <!-- <br> -->
-            <select name="Semester" id="" >
+            <select name="Semester" id="">
                 <option value="">Semester</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -173,7 +163,8 @@
                 <td>4</td>
                 <td>Yusuf Azam</td>
                 <td>www.gdrive.com</td>
-            </tr><tr>
+            </tr>
+            <tr>
                 <td>Question Paper</td>
                 <td>Civil Engineering</td>
                 <td>6</td>
@@ -186,7 +177,8 @@
                 <td>6</td>
                 <td>Sameer</td>
                 <td>www.gdrive.com</td>
-            </tr><tr>
+            </tr>
+            <tr>
                 <td>Question Paper</td>
                 <td>Electronics Engineering</td>
                 <td>6</td>
@@ -194,11 +186,56 @@
                 <td>www.gdrive.com</td>
             </tr>
         </table>
-         <div class="container" id="files_container">
+        <div class="container" id="files_container">
             <!-- this div will contain all the pdf file. -->
-         </div>
+        </div>
 
-         <!-- <script type="module" src="quesAns.js" type="text/javascript" charset="utf-8"></script> -->
+
+        <!-- ask Question  -->
+        <button class="qbutton" onclick="openForm()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <div class="form-popup formd " id="myForm">
+            <form action="/action_page.php" class="qaform">
+                <button class="cancel"><i class="fa fa-times" aria-hidden="true" onclick="closeForm()"></i></button>
+                <input type="text" placeholder="Your Question" required>
+                <br>
+                <textarea placeholder="Question Description" name="" id="qds" cols="30" rows="5"></textarea>
+                <button class="qsubmit ">Submit</button>
+            </form>
+        </div>
+        <h1>Frequently Asked Question</h1>
+        <div class="faq-container">
+            <div class="faq active">
+                <h3 class="faq-title">
+                    Question
+                </h3>
+                <p class="faq-text">
+                    Question Description
+                </p>
+                <button class="faq-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+        </div>
+
+
+
+        </div>
+
+        <script>
+            const buttons = document.querySelectorAll('.faq-toggle');
+
+
+
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    button.parentNode.classList.toggle('active')
+                })
+            })
+        </script>
+
+        <!-- <script src="script.js"></script> -->
 
 
         <!-- Footer -->
@@ -219,11 +256,11 @@
 
 <script>
     function openForm() {
-      document.getElementById("myForm").style.display = "block";
+        document.getElementById("myForm").style.display = "block";
     }
-    
+
     function closeForm() {
-      document.getElementById("myForm").style.display = "none";
+        document.getElementById("myForm").style.display = "none";
     }
 </script>
 <script src="home.js"></script>
