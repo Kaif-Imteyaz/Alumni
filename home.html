@@ -42,7 +42,7 @@
             }).then((response)=>{
                 if(response.status!=200 && response.status!=201){
                     localStorage.setItem("token",JSON.stringify(''));
-                    window.location.href="http://127.0.0.1:5500/login.html";
+                    window.location.href="http://127.0.0.1:5501/login.html";
                 }
                 else{
                     return response.json();
@@ -52,13 +52,13 @@
                 loadPage(data);
             })
             .catch((e)=>{
-                window.location.href="http://127.0.0.1:5500/login.html";
+                window.location.href="http://127.0.0.1:5501/login.html";
             })
         }
         catch(e){
             console.log(e);
             localStorage.setItem("token",JSON.stringify(''));
-            window.location.href="http://127.0.0.1:5500/login.html";
+            window.location.href="http://127.0.0.1:5501/login.html";
         }
     })
 </script>
