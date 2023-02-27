@@ -1,5 +1,4 @@
 /* Profile section  */
-
 *{
     margin:0;
     padding:0;
@@ -9,17 +8,13 @@
 body{
     background-color:#f3efe0
 }
-
-
 .profile{
     display: flex;
     padding-bottom: 5%;
-  
 }
 .prof_text{
     /* background-color: black; */
     width: 70%;
-
 }
 /* user id name */
 #userName{
@@ -31,15 +26,13 @@ body{
 #welcomeNotes{
     margin-left: 5%
 }
-
 .prof_pic{
     padding: 43px 0px 0 11%;
 }
 .prof_text h2{
     padding: 5%;
     padding-bottom: 0;
-    text-align: left;
-    
+    text-align: left;  
 }
 .prof_text p{
     text-align: left;
@@ -48,7 +41,6 @@ body{
 .prof_pic img{
     border-radius: 100%;
 }
-
 /* course section  */
 .qbutton {
     background-color: #158247;
@@ -60,7 +52,6 @@ body{
     border: none;  
     border-radius: 100%;
   }
-  
   .cancel{
      background-color: transparent;
      border: none;
@@ -68,7 +59,6 @@ body{
      top: 5%;
      left: 71%;
   }
-  
   /* The popup form - hidden by default */
   .form-popup {
     display: none;
@@ -78,10 +68,7 @@ body{
     left: 0;
     z-index: 9;
   }
- 
-
 /* Q&a section / */
-
 .qaform{
     margin-left: 25%;
     width: 50%;
@@ -93,7 +80,6 @@ body{
     padding: 5%;
 }
 .qaform input, .qsubmit,#qds{
-
     border: none;
     padding-left: 16px;
     width: 70%;
@@ -101,7 +87,6 @@ body{
     margin:2% 0 1%  0;
     border: none;
     border-bottom: 1px solid #222222;
-
     margin-left: 15%;
 }
 .qsubmit{
@@ -125,8 +110,6 @@ body{
     border: 2px solid black;
     padding: 20px;
 }
-
-
 #files_container{
     display:flex;   
     border-radius: 5px;
@@ -135,7 +118,6 @@ body{
     flex-flow:wrap;
     position: relative;
 }
-
 .file_box{
     width:20%;
     height:350px;
@@ -143,7 +125,6 @@ body{
     padding:10px;
     display: flex;
     flex-direction: column;
-    /* align-items:center; */
     justify-content: space-between;
     border-radius: 5px;
     background-image: url(./pdfIcon2.png);
@@ -164,7 +145,6 @@ body{
     font-size: 0.8em;
     margin:0;
 }
-
 /* table  */
 table {
     font-family: arial, sans-serif;
@@ -176,12 +156,10 @@ table {
     background-color: #222222;
     color: #fff;
   }
-  
   td, th {
     border: 1px solid #8f7a7a;
     padding: 8px;
     text-align: center;
-
   }
   tr:nth-child(even) {
     background-color: #dddddd;
@@ -191,7 +169,6 @@ table {
     height: 35px;
     margin-bottom: 8px;
     border-radius: 5px;
-    /* border: none; */
     background-color: #158247;
     color: #fff;
 }
@@ -210,23 +187,18 @@ table {
         background-size: 50%;
     }
 }
-
 @media screen and (max-width:600px){
      
         .file_box{
             width:60%;
         }
 }
-
-
 /* question section */
 @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
-
 .faq-container{
    max-width: 70%;
    margin: 0 auto;
 }
-
 .faq{
    background-color: transparent;
    border: 1px solid #9fa4a8;
@@ -237,16 +209,11 @@ table {
    overflow: hidden;
    transition: 0.3s ease;
 }
-
 .faq.active {
-   /* background-color: #fff; */
    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 
    6px rgba(0, 0, 0, 0.1);
 }
-
-.faq.active::before,
-.faq.active::after {
-   /* content: '\f075'; */
+.faq.active::before, .faq.active::after {
    font-family: 'Font awesome 5 free';
    color: #2ecc71;
    font-size: 7rem;
@@ -256,27 +223,22 @@ table {
    left: 20px;
    z-index: 0;
 }
-
 .faq.active::before{
    color: #3498db;
    top: -10px;
    left: -30px;
    transform: rotateY(180deg);
 }
-
 .faq-title{
    margin: 0 35px 0 0;
 }
-
 .faq-text{
    display: none;
    margin: 30px 0 0;
 }
-
 .faq.active .faq-text{
    display: block;
 }
-
 .faq-toggle{
    background-color: transparent;
    border-radius: 50%;
@@ -293,24 +255,19 @@ table {
    width: 30px;
    height: 30px;
 }
-
 .faq-toggle:focus{
    outline: none;
 }
-
 .faq-toggle .fa-times {
    display: none;
 }
-
 .faq.active .faq-toggle .fa-times {
    display: block;
    color: white;
 }
-
 .faq.active .faq-toggle .fa-chevron-down{
    display: none;
 }
-
 .faq.active .faq-toggle {
    background-color: #9fa4a8;
 }
