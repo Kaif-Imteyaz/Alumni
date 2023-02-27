@@ -547,5 +547,41 @@ class handler{
             exit;
         }
     }
+
+    function fetchAns(){
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+
+            $url = $_SERVER['REQUEST_URI'];
+            //convert the url into associative array in php
+            $parsedurl = parse_url($url);
+            $param = array();
+            //get the query part of the parsedurl and parse it again to get the associative array with all key-value pairs.
+            parse_str($parsedurl['query'], $param);
+
+            $this->connection=$this->db->getConnection();
+            $statement=$this->connection->prepare('select * from answer where questionId=?');
+            $statement->bind_param("s",$param['quesId']);
+            $statement->execute();
+            $result=$statement->get_result();
+            if($result->num_rows<1){
+                http_response_code(404);
+                echo "no answers found";
+                exit;
+            }
+            $arr=array();
+            while($row=$result->fetch_assoc()){
+                array_push($arr,$row);
+            }
+            http_response_code(200);
+            header("content-type:appliation/json");
+            echo json_encode($arr);
+            exit;
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
 }
 ?>

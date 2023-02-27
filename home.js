@@ -201,6 +201,11 @@ function fetchQuestions(contributer){
             p2.textContent='reply';
             div.append(p2);
 
+            const h4=document.createElement('h4');
+            h4.classList.add('faq-text');
+            h4.textContent="Answers";
+            div.append(h4);
+
             const form=document.createElement('form');
             form.classList.add('qaform');
             form.classList.add('off');
@@ -233,7 +238,34 @@ function fetchQuestions(contributer){
 
             div.append(button);
             button.addEventListener('click', () => {
-                button.parentNode.classList.toggle('active')
+                let answers=document.querySelectorAll('.ans'+d.id);
+                if(answers.length>0){
+                    answers.forEach(ans=>{
+                        div.removeChild(ans);
+                    })
+                }
+
+                button.parentNode.classList.toggle('active');
+                //make request to fetch all ans related to the question.
+              
+                let xhr=new XMLHttpRequest();
+                const url=`http://localhost:8000/fetchAns?quesId=${d.id}`;
+                xhr.open('GET',url)
+                xhr.addEventListener('load',()=>{
+                    //display all the answers.
+                    let response=JSON.parse(xhr.response);
+                    response.forEach((res)=>{
+                        const p=document.createElement('p');
+                        p.classList.add('faq-text');
+                        p.classList.add('ans'+d.id);
+                        p.textContent=res.content;
+                        div.append(p);
+                    })
+                });
+                xhr.addEventListener('error',(e)=>{
+                    console.log(e);
+                })
+                xhr.send();
             })
             p2.addEventListener('click',()=>{
                 form.classList.toggle('off');
@@ -252,6 +284,7 @@ function fetchQuestions(contributer){
                 xhr.open(method,url);
                 xhr.addEventListener('load',()=>{
                     console.log(xhr.response);
+                 form.classList.toggle('off');
                 })
                 xhr.addEventListener('error',(e)=>{
                     console.log(e);
@@ -274,8 +307,6 @@ function fetchQuestions(contributer){
         //             <i class="fas fa-times"></i>
         //         </button>
         //     </div>
-
-
 
     })
     .catch((e)=>{
