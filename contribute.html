@@ -29,7 +29,7 @@
     <title>ALUMNI</title>
 
 </head>
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
 <body>
 
     <section id="Top">
@@ -72,20 +72,17 @@
         </section>
         <!-- contribute section  -->
         <div class="con-container">
-            <form action="#" class="up-form">
-                <input type="number" placeholder="Id" name="id">
+            <form action="http://localhost:8000/fileUpload" method="POST" class="up-form" id="file-upload">
+               
+                <input type="text" placeholder="Title" name="title" id="title">
                 <br>
-                <input type="text" placeholder="Title" name="title">
+                <input type="text" placeholder="Branch" name="branch" id="branch">
                 <br>
-                <input type="text" placeholder="Branch" name="branch">
+                <input type="text" placeholder="Semester" name="semester" id="semester">
                 <br>
-                <input type="text" placeholder="Semester" name="semester">
+                <input type="text" placeholder="Description" name="description" id="description">
                 <br>
-                <input type="text" placeholder="Description" name="description">
-                <br>
-                <input type="text" placeholder="Name" name="name">
-                <br>
-                <input type="file" placeholder="" name="id" id="pdf-input">
+                <input type="file" placeholder="" name="id" id="file">
  
                 <button type="submit" class="ssubmit"> Upload</button>
             </form>
@@ -100,15 +97,7 @@
             <p class="copyright">© Copyright ALUMNI</p>
         </footer>
 
-<script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-    
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-</script>
+
 <script src="contribute.js"></script>
 </body>
 </html>

@@ -181,7 +181,7 @@ function fetchQuestions(){
         data.forEach(d=>{
             const div=document.createElement('div');
             div.classList.add('faq');
-            div.classList.add('active');
+            // div.classList.add('active');
 
             const h3=document.createElement('h3');
             h3.classList.add('faq-title');

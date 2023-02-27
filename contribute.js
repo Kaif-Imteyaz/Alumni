@@ -1,9 +1,8 @@
 
 
-//for securing this page from authorized access
+// //for securing this page from authorized access
 window.addEventListener('load', () => {
     const session = JSON.parse(localStorage.getItem(("token")));
-    console.log(session);
     fetch("http://localhost:8000/verifyToken",{
         method:"POST",
         body:JSON.stringify(session),
