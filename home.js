@@ -44,7 +44,7 @@ function loadPage(data){
     fetchPdfFiles(dropDownForm);
 
     //fetching all the questions
-    fetchQuestions();
+    fetchQuestions(data.name);
 
     dropDownForm.addEventListener('submit',function(e){
         e.preventDefault();
@@ -169,7 +169,7 @@ function modifyTable() {
 }
 
 
-function fetchQuestions(){
+function fetchQuestions(contributer){
     const url="http://localhost:8000/getQues";
     const method='GET';
     fetch(url)
@@ -194,6 +194,27 @@ function fetchQuestions(){
             p.textContent=d.description;
             div.append(p);
 
+            const p2=document.createElement('a');
+            p2.style.cursor="pointer";
+            p2.classList.add('faq-text');
+            p2.classList.add('active');
+            p2.textContent='reply';
+            div.append(p2);
+
+            const form=document.createElement('form');
+            form.classList.add('qaform');
+            form.classList.add('off');
+            const input=document.createElement('input');
+            form.append(input);
+            const btn=document.createElement('button');
+            btn.textContent="submit";
+            btn.type="submit";
+            btn.classList.add('qsubmit');
+            form.append(btn);
+
+            div.append(form);
+            
+
             const button=document.createElement('button');
             button.classList.add('faq-toggle');
             
@@ -213,6 +234,29 @@ function fetchQuestions(){
             div.append(button);
             button.addEventListener('click', () => {
                 button.parentNode.classList.toggle('active')
+            })
+            p2.addEventListener('click',()=>{
+                form.classList.toggle('off');
+            })
+
+            form.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                let url=`http://localhost:8000/ans`;
+                let method='POST';
+                let payload={
+                    content:input.value,
+                    questionId:d.id,
+                    contributer:contributer,
+                }
+                let xhr=new XMLHttpRequest();
+                xhr.open(method,url);
+                xhr.addEventListener('load',()=>{
+                    console.log(xhr.response);
+                })
+                xhr.addEventListener('error',(e)=>{
+                    console.log(e);
+                })
+                xhr.send(JSON.stringify(payload));
             })
 
             outerDiv.append(div);

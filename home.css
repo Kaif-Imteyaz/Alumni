@@ -8,6 +8,10 @@
 body{
     background-color:#f3efe0
 }
+
+.off{
+    display:none;
+}
 .profile{
     display: flex;
     padding-bottom: 5%;

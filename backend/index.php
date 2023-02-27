@@ -22,7 +22,7 @@
     $handler=new handler();
 
     //acceptable routes in our system
-    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles","verifyToken"=>"/verifyToken", "uploadQuestion"=>"/ask","getQuestions"=>"/getQues");
+        $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles","verifyToken"=>"/verifyToken", "uploadQuestion"=>"/ask","getQuestions"=>"/getQues","postAns"=>"/ans");
  
     //extracting the url from the request
     $url = $_SERVER["REQUEST_URI"];
@@ -73,6 +73,9 @@
     }
     else if($url==$routes['getQuestions']){
         $handler->getQues();
+    }
+    else if($url==$routes['postAns']){
+        $handler->postAns();
     }
     else{
         $handler->exceptionalPath();

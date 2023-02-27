@@ -486,7 +486,7 @@ class handler{
     function getQues(){
         if($_SERVER['REQUEST_METHOD']=='GET'){
             $this->connection=$this->db->getConnection();
-            $statement=$this->connection->prepare('select asked_by,title,description from question');
+            $statement=$this->connection->prepare('select id,asked_by,title,description from question');
             $statement->execute();
             $result=$statement->get_result();
             if($result->num_rows<1){
@@ -505,6 +505,45 @@ class handler{
         else{
             http_response_code(405);
             echo "invalid method";
+            exit;
+        }
+    }
+
+    function postAns(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            try{
+                $data=json_decode(file_get_contents("php://input"));
+                //sanitizing the input
+                //....
+           
+
+                $this->connection=$this->db->getConnection();
+                $statement=$this->connection->prepare('insert into answer (questionId,content,contributer) values(?,?,?)');
+                $statement->bind_param("sss",$data->questionId,$data->content,$data->contributer);
+                $statement->execute();
+                $result=$statement->affected_rows;
+                $statement->close();
+                $this->connection->close();
+                if($result>0){
+                    http_response_code(200);
+                    echo "answer posted successfully";
+                    exit;
+                }
+                else{
+                    http_response_code(500);
+                    echo "some error has occured";
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                http_response_code(500);
+                echo $e->getMessage();
+                exit;
+            }
+        }
+        else{
+            http_response_code(405);
+            echo "Invalid method";
             exit;
         }
     }
