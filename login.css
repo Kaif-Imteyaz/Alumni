@@ -73,11 +73,9 @@ html, body
 {
     background: #f3efe0;
 }
-
 .flip-card-3D-wrapper {
   width: 28.5%;
   height: 72vh;
-
   margin: 0 auto;
   margin-bottom: 10%;
 }
@@ -123,7 +121,6 @@ html, body
   z-index: 2;
 }
 #flip-card .flip-card-back {
-
     -o-transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     -ms-transform: rotateY(180deg);
@@ -133,7 +130,6 @@ html, body
   display: block;
   font-size: 17px;
 }
-
 .formError{
   font-size:0.75em;
   margin-top:15px;
