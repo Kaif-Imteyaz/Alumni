@@ -103,6 +103,28 @@ body{
     margin:2% 0 1%  0;
     margin-left: 15%;
 }
+#fileUploadForm{
+    /* display:none; */
+    width:50%;
+    height:300px;
+    padding:0px;
+    background: white;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 9px;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+#fileUploadForm button{
+    position: absolute;
+    width:0px;
+}
+#fileUploadForm button i{
+    position: relative;
+    top:0px;
+    right:0px;
+}
 .box-content{
     /* background-color: red; */
     margin: 20px;

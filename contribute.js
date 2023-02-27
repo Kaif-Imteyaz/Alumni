@@ -30,25 +30,19 @@ window.addEventListener('load', () => {
 function loadPage(data){
 
     const logoutBtn=document.querySelector('#logout-btn');
-    const uploadBtn=document.querySelector('#file-upload-btn');
+ 
     const userNameTag=document.querySelector("#userName");
     const userIdTag=document.querySelector("#userId");
     const userEmailTag=document.querySelector("#userEmail");
-    const dropDownForm=document.querySelector('#dropdown');
-    const fileUploadForm=document.querySelector('#fileUploadForm')
+
+    const fileUploadForm=document.querySelector('#file-upload');
 
 
     userNameTag.textContent=data.name;
     userIdTag.textContent=data.id;
     userEmailTag.textContent=data.email;
 
-    fetchPdfFiles(dropDownForm);
-
-    dropDownForm.addEventListener('submit',function(e){
-        e.preventDefault();
-        fetchPdfFiles(this);
-    })
-
+ 
    
     //event handler for logout
     logoutBtn.addEventListener('click',(e)=>{
@@ -79,70 +73,43 @@ function loadPage(data){
         }
     })
 
-    uploadBtn.addEventListener('click',()=>{
-        fileUploadForm.display="block";
+
+    //file upload event handler
+    fileUploadForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const name=data.name;
+            const title=document.querySelector('#title').value;
+            const semester=document.querySelector('#semester').value;
+            const description=document.querySelector('#description').value;
+            const branch=document.querySelector('#branch').value;
+            const fileInput=document.querySelector('#file');
+            const action=fileUploadForm.action;
+            const method=fileUploadForm.method;
+
+            const formData=new FormData();
+
+            formData.append("file",fileInput.files[0]);
+            formData.append('name',name);
+            formData.append('title',title);
+            formData.append('semester',semester);
+            formData.append('description',description);
+            formData.append('branch',branch);
+            
+            fetch(action,{
+                method:method,
+                body:formData,
+            })
+            .then((response)=>{
+                return response.text();
+            })
+            .then((data)=>{
+                const formError=document.querySelector('.formError');
+                formError.textContent=data;           
+             })
+           .catch((e)=>{
+                console.log(e);
+            })
+
     })
 }
 
-function fetchPdfFiles(_this){
-    const branch=_this.elements['branch'].value;
-    const semester=_this.elements['semester'].value;
-    const fileType=_this.elements['filetype'].value;
-
-    fetch(`http://localhost:8000/getAllFiles?branch=${branch}&semester=${semester}&title=${fileType}`)
-    .then((response)=>{
-        if(response.status!=200 && response.status!=201){
-            modifyTable();
-        }
-        else{
-            return response.json();
-        }
-    })
-    .then((data)=>{
-        if( data!=null && typeof(data)=='object' && Object.keys(data).length>0){
-            displayFiles(data);
-        }
-    })
-    .catch((e)=>{
-        console.log(e);
-    })
-}
-
-function displayFiles(files){
-    modifyTable();
-    const table=document.querySelector('#fileContent');
-    files.forEach(file=>{
-        let tr=document.createElement('tr');
-        let td1=document.createElement('td');
-        let td2=document.createElement('td');
-        let td3=document.createElement('td');
-        let td4=document.createElement('td');
-        let td5=document.createElement('td');
-        const aTag=document.createElement('a');
-
-        td1.textContent=file['title'];
-        tr.append(td1);
-        td2.textContent=file['branch'];
-        tr.append(td2);
-        td3.textContent=file['semester'];
-        tr.append(td3);
-        td4.textContent=file['name'];
-        tr.append(td4);
-
-        aTag.href=`http://localhost:8000/getFile?id=${file['id']}`;
-        aTag.target="_blank"
-        aTag.textContent='pdf';
-        td5.append(aTag);
-        tr.append(td5);
-
-        table.append(tr);
-    })
-}
-
-function modifyTable(){
-    const table=document.querySelector('#fileContent');
-    const tr=document.querySelectorAll('#fileContent tr');
-    for(let i=1;i<tr.length;i++){
-        table.removeChild(tr[i]);
-    }
-}
