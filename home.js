@@ -1,5 +1,4 @@
 
-
 //for securing this page from authorized access
 window.addEventListener('load', () => {
     const session = JSON.parse(localStorage.getItem(("token")));
@@ -37,6 +36,7 @@ function loadPage(data){
     const dropDownForm=document.querySelector('#dropdown');
     const fileUploadForm=document.querySelector('#fileUploadForm')
 
+    const questionUploadForm=document.querySelector('#questionUploadForm');
 
     userNameTag.textContent=data.name;
     userIdTag.textContent=data.id;
@@ -44,11 +44,41 @@ function loadPage(data){
 
     fetchPdfFiles(dropDownForm);
 
+    fetchQuestions();
+
     dropDownForm.addEventListener('submit',function(e){
         e.preventDefault();
         fetchPdfFiles(this);
     })
 
+    questionUploadForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const question_title=document.querySelector('#question_title').value;
+        const question_description=document.querySelector('#question_description').value;
+        const askedBy=data.name;
+
+        const url='http://localhost:8000/ask';
+        const method='POST';
+        const body={
+            title:question_title,
+            description:question_description,
+            asked_by:askedBy,
+        }
+
+        fetch(url,{
+            method:method,
+            body:JSON.stringify(body),
+        })
+        .then((response)=>{
+          response.text();
+        })
+        .then((data)=>{
+
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+    })
    
     //event handler for logout
     logoutBtn.addEventListener('click',(e)=>{
@@ -79,9 +109,7 @@ function loadPage(data){
         }
     })
 
-    uploadBtn.addEventListener('click',()=>{
-        fileUploadForm.display="block";
-    })
+  
 }
 
 function fetchPdfFiles(_this){
@@ -145,4 +173,9 @@ function modifyTable(){
     for(let i=1;i<tr.length;i++){
         table.removeChild(tr[i]);
     }
+}
+
+
+function fetchQuestion(){
+    
 }

@@ -22,7 +22,7 @@
     $handler=new handler();
 
     //acceptable routes in our system
-    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles","verifyToken"=>"/verifyToken");
+    $routes=array("signup"=>"/createAccount","login"=>"/createSession","logout"=>"/destroySession","fileUpload"=>"/fileUpload","getFile"=>"/getFile","getAllFiles"=>"/getAllFiles","verifyToken"=>"/verifyToken", "uploadQuestion"=>"/ask");
  
     //extracting the url from the request
     $url = $_SERVER["REQUEST_URI"];
@@ -66,6 +66,10 @@
 
     else if($url==$routes['getAllFiles']){
         $handler->getAllFiles();
+    }
+
+    else if($url==$routes['uploadQuestion']){
+        $handler->uploadQuestion();
     }
 
     else{

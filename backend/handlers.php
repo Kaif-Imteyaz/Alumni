@@ -442,5 +442,45 @@ class handler{
             exit;
         }
     }
+
+
+    function uploadQuestion(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            try{
+                $data=json_decode(file_get_contents("php://input"));
+                //sanitizing the input
+                //....
+           
+
+                $this->connection=$this->db->getConnection();
+                $statement=$this->connection->prepare('insert into question (asked_by,title,description) values(?,?,?)');
+                $statement->bind_param("sss",$data->asked_by,$data->title,$data->description);
+                $statement->execute();
+                $result=$statement->affected_rows;
+                $statement->close();
+                $this->connection->close();
+                if($result>0){
+                    http_response_code(200);
+                    echo "question posted successfully";
+                    exit;
+                }
+                else{
+                    http_response_code(500);
+                    echo "some error has occured";
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                http_response_code(500);
+                echo $e->getMessage();
+                exit;
+            }
+        }
+        else{
+            http_response_code(405);
+            echo "Invalid method";
+            exit;
+        }
+    }
 }
 ?>
