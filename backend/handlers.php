@@ -409,14 +409,14 @@ class handler{
             $branch = $query['branch'];
             $semester = $query['semester'];
             $title = $query['title'];
-            $page=1;
-            $resultPerPage=10;
-            $startingPage=($page-1)*$resultPerPage;
+            // $page=1;
+            // $resultPerPage=10;
+            // $startingPage=($page-1)*$resultPerPage;
 
-            $sql = "select id,name,branch,semester,title from files where branch=(?) and semester=(?) and title=(?) limit ?,?";
+            $sql = "select id,name,branch,semester,title from files where branch=(?) and semester=(?) and title=(?)";
             $this->connection = $this->db->getConnection();
             $statement = $this->connection->prepare($sql);
-            $statement->bind_param("sssii",$branch,$semester,$title,$startingPage,$resultPerPage);
+            $statement->bind_param("sss",$branch,$semester,$title);
             $statement->execute();
             $result = $statement->get_result();
 
