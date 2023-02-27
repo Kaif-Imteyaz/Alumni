@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ab24a08817ac2661fa394070c54624d5be671c6
 //for securing this page from authorized access
 window.addEventListener('load', () => {
     const session = JSON.parse(localStorage.getItem(("token")));
@@ -47,6 +43,7 @@ function loadPage(data){
 
     fetchPdfFiles(dropDownForm);
 
+    //fetching all the questions
     fetchQuestions();
 
     dropDownForm.addEventListener('submit',function(e){
@@ -169,4 +166,75 @@ function modifyTable() {
     for (let i = 1; i < tr.length; i++) {
         table.removeChild(tr[i]);
     }
+}
+
+
+function fetchQuestions(){
+    const url="http://localhost:8000/getQues";
+    const method='GET';
+    fetch(url)
+    .then((response)=>{
+        return response.json();
+    })   
+    .then((data)=>{
+        const outerDiv=document.querySelector('.faq-container')
+        data.forEach(d=>{
+            const div=document.createElement('div');
+            div.classList.add('faq');
+            div.classList.add('active');
+
+            const h3=document.createElement('h3');
+            h3.classList.add('faq-title');
+            h3.textContent=d.title;
+            
+            div.append(h3);
+            
+            const p=document.createElement('p');
+            p.classList.add('faq-text');
+            p.textContent=d.description;
+            div.append(p);
+
+            const button=document.createElement('button');
+            button.classList.add('faq-toggle');
+            
+            const i1=document.createElement('i');
+            const i2=document.createElement('i');
+
+            i1.classList.add('fas');
+            i1.classList.add('fa-chevron-down');
+
+            i2.classList.add('fas');
+            i2.classList.add('fa-times');
+
+            button.appendChild(i1);
+            button.appendChild(i2);
+
+
+            div.append(button);
+            button.addEventListener('click', () => {
+                button.parentNode.classList.toggle('active')
+            })
+
+            outerDiv.append(div);
+
+        })
+        // <div class="faq active">
+        //         <h3 class="faq-title">
+        //             Question
+        //         </h3>
+        //         <p class="faq-text">
+        //             Question Description
+        //         </p>
+        //         <button class="faq-toggle">
+        //             <i class="fas fa-chevron-down"></i>
+        //             <i class="fas fa-times"></i>
+        //         </button>
+        //     </div>
+
+
+
+    })
+    .catch((e)=>{
+        console.log(e);
+    })
 }

@@ -482,5 +482,31 @@ class handler{
             exit;
         }
     }
+
+    function getQues(){
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $this->connection=$this->db->getConnection();
+            $statement=$this->connection->prepare('select asked_by,title,description from question');
+            $statement->execute();
+            $result=$statement->get_result();
+            if($result->num_rows<1){
+                http_response_code(404);
+                echo "no files found";
+                exit;
+            }
+            $arr=array();
+            while($row=$result->fetch_assoc()){
+                array_push($arr,$row);
+            }
+            http_response_code(200);
+            echo json_encode($arr);
+            exit;
+        }
+        else{
+            http_response_code(405);
+            echo "invalid method";
+            exit;
+        }
+    }
 }
 ?>
