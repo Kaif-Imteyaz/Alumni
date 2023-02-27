@@ -1,156 +1,120 @@
-*{
+* {
   font-family: 'Poppins';
 }
-
-body{
+body {
   font-family: 'Just Another Hand', cursive;
   background: #f3f3f3;
 }
-
 /* join and explore */
-#join, #Explore{
+#join,#Explore {
   text-decoration: none;
   color: white;
 }
-
-#join:hover{
+#join:hover {
   color: #047a3b;
 }
-
-#Explore:hover{
+#Explore:hover {
   color: white;
 }
-
-
 /* join and explore end*/
-
-
-
 html {
-    box-sizing: border-box;
-  }
-
-
-  /* navbar */
-
-  .navbar {
-    background-color: #047a3b; 
-    opacity: 1; /* set the opacity to 1 to remove transparency */
-  }
-  
-.navbar-brand{
+  box-sizing: border-box;
+}
+/* navbar */
+.navbar {
+  background-color: #047a3b;
+  opacity: 1;
+  /* set the opacity to 1 to remove transparency */
+}
+.navbar-brand {
   margin-left: 4%;
 }
-
-.nav-link{
+.nav-link {
   color: #ffffff;
 }
-
-.collapse{
-    margin-right: 2%;
+.collapse {
+  margin-right: 2%;
 }
-
-
-
 /* headings from top-section */
-h1{
+h1 {
   color: #222222;
-    text-align: center;
+  text-align: center;
 
 }
-h2{
-    text-align: center;
-    /* padding: 3% 15%; */
-    color: #222222;
-    size: 80%;
+h2 {
+  text-align: center;
+  /* padding: 3% 15%; */
+  color: #222222;
+  size: 80%;
 }
-
 /* Top-section */
-#Top{
-    text-align: center;
+#Top {
+  text-align: center;
 }
-
-.Top-button{
-    margin: 3%;
+.Top-button {
+  margin: 3%;
 }
-
 /* background image */
-.Top-head{
-  background-image: linear-gradient(to bottom, #84a391, rgba(28, 29, 27, 0.007)),url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
+.Top-head {
+  background-image: linear-gradient(to bottom, #84a391, rgba(28, 29, 27, 0.007)), url('https://2.bp.blogspot.com/-6VCLfbJEK74/W17uqWhMKvI/AAAAAAAAHDM/qua0Qf3kUfE3vXKCvR5j-OOKGQMi7C_xACLcBGAs/s1600/University%2BPolytechnic%252C%2BJamia%2BMillia%2BIslamia%252C%2BBy%2BMohsin%2BJaved%2B%25282%2529.jpg');
   padding: 15% 15%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;  
-    background-size: 100% 100%;
-    background-blend-mode: normal;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-blend-mode: normal;
 }
-
 /* map */
-
-.maps{
+.maps {
   padding: 2%;
 }
-
-.map-section{
+.map-section {
   margin-left: 2%;
   margin-top: 3%;
 }
-
-.map-img{
+.map-img {
   margin-left: 2%;
 }
-
-.map-text{
+.map-text {
   padding: 2%;
 }
-
-
-
 /* explore */
-.college{
+.college {
   margin-left: 2%;
   size: 100%;
   width: 500px;
   padding: 2%;
 }
-.jmi-pic{
-  margin-left: 5%;  
+.jmi-pic {
+  margin-left: 5%;
 
- }
-
-#read-more{
-color: #047a3b;
 }
-#read-more::after
-{
+#read-more {
   color: #047a3b;
-  }
-
-
-#explore{
+}
+#read-more::after {
+  color: #047a3b;
+}
+#explore {
   padding: 2%;
   text-align: left;
 }
-.about-jmi{
+.about-jmi {
   text-align: left;
 }
-.abt-jmi{
+.abt-jmi {
   text-align: justify;
   padding: 6px;
   margin: 6px;
 }
-
-
 /* about alumni and team */
-.abt-page{
-  padding-top: 5% ;
+.abt-page {
+  padding-top: 5%;
 }
-
-.alumni-abt-blank{
-   padding: 3%;
+.alumni-abt-blank {
+  padding: 3%;
   margin: 4% 4% 0 4%;
 }
-
-.alumni-abt{
+.alumni-abt {
   border-radius: 30px;
   border: #000 1px solid;
   text-align: justify;
@@ -158,9 +122,7 @@ color: #047a3b;
   margin-left: 5%;
   margin-bottom: 5%;
 }
-
-
-.alumni-abt-right{
+.alumni-abt-right {
   border-radius: 30px;
   border: #000 1px solid;
   text-align: justify;
@@ -168,183 +130,139 @@ color: #047a3b;
   margin-left: 13%;
   margin-bottom: 5%;
 }
-
-
 /* Box transition and shadow */
-.alumni-abt, .alumni-abt-right{
+.alumni-abt, .alumni-abt-right {
   position: relative;
   width: 40%;
   height: 50%;
   background: white;
-  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
-  /* color: white; */
-  box-shadow: 20px 20px rgba(0,0,0,.15);
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+  box-shadow: 20px 20px rgba(0, 0, 0, .15);
   transition: all .4s ease;
 }
-
-.college, .map-text{
-position: relative;
-width: 55%;
-background: white;
-border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
-/* color: white; */
-box-shadow: 20px 20px rgba(0,0,0,.15);
-transition: all .4s ease;
+.college,.map-text {
+  position: relative;
+  width: 55%;
+  background: white;
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+  box-shadow: 20px 20px rgba(0, 0, 0, .15);
+  transition: all .4s ease;
 }
-
-.map-img, .jmi-pic{
+.map-img,.jmi-pic {
   position: relative;
   width: 35%;
   padding: 1%;
   background: white;
-  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
-  /* color: white; */
-  box-shadow: 20px 20px rgba(0,0,0,.15);
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+  box-shadow: 20px 20px rgba(0, 0, 0, .15);
   transition: all .4s ease;
-  }
+}
 
-.jmi{
+.jmi {
   position: relative;
   width: 96%;
   height: 100%;
   margin-left: 2%;
   background: white;
-  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
-  /* color: white; */
-  box-shadow: 5px 10px rgba(0,0,0,.15);
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+  box-shadow: 5px 10px rgba(0, 0, 0, .15);
   transition: all .4s ease;
   margin-bottom: 30px;
 }
-
 .college:hover {
-  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
 .map-text:hover {
-  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
 .alumni-abt:hover {
-  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
 .alumni-abt-right:hover {
-  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
-
-
-
 /* About us card  CSS */
-    
-
-
-*, *:before, *:after {
+*,*:before,*:after {
   box-sizing: inherit;
 }
-.sir{
-   padding-left: 36%;
+.sir {
+  padding-left: 36%;
 
-  }
-  .column-sir {
-    float: left;
-    width: 45%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-  }
-    
-    .column {
-      float: left;
-      width: 25%;
-      margin-bottom: 16px;
-      padding: 0 8px;
-    }
-    
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      margin: 8px;
-    }
-
-
-    /* our team */
-    
-    .container {
-      padding: 0 16px;
-    }
-    
-    .container::after, .row::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-    
-    .title {
-      color: grey;
-    }
-    
-    .button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #047a3b;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-    }
-    
-    .button:hover {
-      background-color: #0a3c05e4;
-    }
-
-
-
-    .abt-team{
-      /* margin-left: 10%; */
-    }
-
-
-    
-    @media screen and (max-width: 650px) {
-      .column {
-        width: 100%;
-        display: block;
-      }
-    }
-
-
-
-
-
-    /* footer */
-
-#footer{
-    background-color: #047a3bed;
-    text-align: center;
-    padding: 2% 2%;
 }
-.social-icon{
-    margin-top: 5%;
-    margin-left: 2%;
-    margin-bottom: 5%;
+.column-sir {
+  float: left;
+  width: 45%;
+  margin-bottom: 16px;
+  padding: 0 8px;
 }
-.copyright{
-    padding: 3%;
+.column {
+  float: left;
+  width: 25%;
+  margin-bottom: 16px;
+  padding: 0 8px;
 }
-
-
-
-    /* for explore */ /* alumni-abt */
-
-    
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  padding: 10px;
+}
+/* our team */
+.container {
+  padding: 0 16px;
+}
+.container::after,
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.title {
+  color: grey;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #047a3b;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+.button:hover {
+  background-color: #0a3c05e4;
+}
 @media screen and (max-width: 650px) {
-  .college , .jmi-pic, .alumni-abt, .abt-team, .map-text, .alumni-abt-right{
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+/* footer */
+#footer {
+  background-color: #047a3bed;
+  text-align: center;
+  padding: 2% 2%;
+}
+.social-icon {
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+}
+.copyright {
+  padding: 3%;
+}
+@media screen and (max-width: 650px) {
+  .college,.jmi-pic,.alumni-abt, .abt-team,
+  .map-text,.alumni-abt-right {
     text-align: center;
     text-justify: auto;
-    
     pointer-events: none;
-
     margin: 5px;
     margin-top: 5%;
     margin-left: 23px;
@@ -353,10 +271,8 @@ transition: all .4s ease;
 
   }
 }
-
-    
 @media screen and (max-width: 650px) {
-   .map-img{
+  .map-img {
     text-align: center;
     text-justify: auto;
     margin: 3px;
@@ -364,4 +280,3 @@ transition: all .4s ease;
     display: block;
   }
 }
-
